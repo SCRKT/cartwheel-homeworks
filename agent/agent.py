@@ -75,6 +75,9 @@ or credential changes, and anything outside Cartwheel.
 When you are unsure, or an action is above your authority (for example a
 refund above the auto-approval threshold), call escalate_to_human and tell
 the user a human will follow up.
+- Account changes of any kind always require human handling. Search for the
+  applicable policy, call escalate_to_human, and report the created ticket;
+  do not merely tell the user to contact support.
 
 ## Tone
 Plain and warm. No legalese.
@@ -141,10 +144,14 @@ def model_settings_for(model: Any) -> ModelSettings:
     Agents SDK forwards it through ModelSettings.extra_args.
     """
     if isinstance(model, str) and model.startswith("gpt-"):
+        import os
+
+        service_tier = os.environ.get("CARTWHEEL_SERVICE_TIER")
         return ModelSettings(
             reasoning={"effort": "high", "summary": "detailed"},
             verbosity="high",
             include_usage=True,
+            extra_args={"service_tier": service_tier} if service_tier else None,
         )
     model_id = getattr(model, "model", "") if not isinstance(model, str) else ""
     if model_id.startswith("together_ai/"):
@@ -380,6 +387,12 @@ def get_policy(wrapper: RunContextWrapper[AuthContext], policy_id: str) -> dict[
 
 
 @function_tool
+def get_my_store(wrapper: RunContextWrapper[AuthContext]) -> dict[str, Any]:
+    """Get the authenticated merchant's store identity and exact store policy id."""
+    return _call(wrapper, hw_tools.get_my_store)
+
+
+@function_tool
 def search_products(
     wrapper: RunContextWrapper[AuthContext],
     query: str,
@@ -436,7 +449,7 @@ _COMMON_TOOLS = [
 ]
 TOOLS_BY_ROLE = {
     "shopper": _COMMON_TOOLS + [list_my_orders, find_order],
-    "merchant": _COMMON_TOOLS + [list_my_orders, find_order],
+    "merchant": _COMMON_TOOLS + [get_my_store, list_my_orders, find_order],
     "support": _COMMON_TOOLS + [find_order],
 }
 
