@@ -1,0 +1,326 @@
+{
+  "schema_version": 1,
+  "source": "/Users/shcrockett/cartwheel-homeworks/traces/support_traces.json",
+  "selection_unit": "langfuse_trace",
+  "seed": 7,
+  "selected_at": "2026-09-17T16:38:00.248519+00:00",
+  "batches": [
+    {
+      "name": "initial_uniform",
+      "method": "uniform_random_without_replacement",
+      "target_count": 15,
+      "records": [
+        {
+          "trace_id": "448d9d31fc39f18c7240dd64f081affb",
+          "session_id": "d22ff2a4-499a-4385-b834-ff96adb72ec6",
+          "scenario_id": "support-0095",
+          "role": "shopper",
+          "reason": "uniform random pick"
+        },
+        {
+          "trace_id": "d0fa1064930aab52cca8f8b6faeb027b",
+          "session_id": "fcad8d57-a792-431d-811a-7e998f866234",
+          "scenario_id": "support-0183",
+          "role": "support",
+          "reason": "uniform random pick"
+        },
+        {
+          "trace_id": "96aef187c36a4dcdfa8337a7cc6de33a",
+          "session_id": "06abb8b8-ffc9-437f-a7c5-81a1ac0ba3e5",
+          "scenario_id": "support-0058",
+          "role": "merchant",
+          "reason": "uniform random pick"
+        },
+        {
+          "trace_id": "5fd39efaad6138b6b6644b89c494d721",
+          "session_id": "824cf214-53b6-4880-a986-75e168e748f6",
+          "scenario_id": "support-0236",
+          "role": "shopper",
+          "reason": "uniform random pick"
+        },
+        {
+          "trace_id": "5a3112b9c6feb639eea5ac0ad0feda71",
+          "session_id": "c1cf0231-45c8-46d0-b180-004fb21605fe",
+          "scenario_id": "support-0223",
+          "role": "shopper",
+          "reason": "uniform random pick"
+        },
+        {
+          "trace_id": "43f669c1b342c3c8e432df80396837f7",
+          "session_id": "64964c85-73b5-490c-80b9-32298de79c81",
+          "scenario_id": "support-0212",
+          "role": "shopper",
+          "reason": "uniform random pick"
+        },
+        {
+          "trace_id": "d8a262fcf8cf8f29fe34f747958b720b",
+          "session_id": "c9ad4e7e-7865-4fbb-acf4-4e8d9891787d",
+          "scenario_id": "support-0073",
+          "role": "merchant",
+          "reason": "uniform random pick"
+        },
+        {
+          "trace_id": "4df840b54f24c25bafd455134fcdf014",
+          "session_id": "308c55df-003a-40e4-a7d5-67691e0e5666",
+          "scenario_id": "support-0231",
+          "role": "shopper",
+          "reason": "uniform random pick"
+        },
+        {
+          "trace_id": "b93088955b6d0bd9b63f004d713c4a4e",
+          "session_id": "eb7f8cae-1174-4ab3-99c9-376106b8eb62",
+          "scenario_id": "support-0001",
+          "role": "shopper",
+          "reason": "uniform random pick"
+        },
+        {
+          "trace_id": "146fd0f2eef655691780f0855bb20d22",
+          "session_id": "b2fb35c7-03a9-4c1d-bd01-796e0588acb4",
+          "scenario_id": "support-0151",
+          "role": "shopper",
+          "reason": "uniform random pick"
+        },
+        {
+          "trace_id": "5c72cdd8bf246932d65702d0b8b9b18d",
+          "session_id": "8ea9faf9-daa0-42f2-8dc1-2dac83f2bf2c",
+          "scenario_id": "support-0241",
+          "role": "shopper",
+          "reason": "uniform random pick"
+        },
+        {
+          "trace_id": "7b257456c5bf40c8aefc7d0c5ed00ab4",
+          "session_id": "7ab7eb0e-b62e-4fb2-ab59-116fa1e2bf9c",
+          "scenario_id": "support-0216",
+          "role": "shopper",
+          "reason": "uniform random pick"
+        },
+        {
+          "trace_id": "66438161533721480faf5cf84b64601e",
+          "session_id": "783cdbf5-700d-4fd9-bd96-a3df91c9b447",
+          "scenario_id": "support-0038",
+          "role": "merchant",
+          "reason": "uniform random pick"
+        },
+        {
+          "trace_id": "1953582653c6af4a13d330506e2e54de",
+          "session_id": "8017e3cd-6184-4e9a-8331-c39f887d3a3c",
+          "scenario_id": "support-0046",
+          "role": "shopper",
+          "reason": "uniform random pick"
+        },
+        {
+          "trace_id": "0fdc006f8b5da168b9c234929573d155",
+          "session_id": "d54e5edd-6b31-4179-bd9f-9b0bd490e13d",
+          "scenario_id": "support-0225",
+          "role": "shopper",
+          "reason": "uniform random pick"
+        }
+      ]
+    },
+    {
+      "name": "initial_cluster_representatives",
+      "method": "kmeans_medoid_on_standardized_features",
+      "features": [
+        "turn_count",
+        "tool_call_count",
+        "distinct_tools",
+        "has_retrieval",
+        "tokens"
+      ],
+      "target_count": 15,
+      "excluded_prior_trace_ids": [
+        "0fdc006f8b5da168b9c234929573d155",
+        "146fd0f2eef655691780f0855bb20d22",
+        "1953582653c6af4a13d330506e2e54de",
+        "43f669c1b342c3c8e432df80396837f7",
+        "448d9d31fc39f18c7240dd64f081affb",
+        "4df840b54f24c25bafd455134fcdf014",
+        "5a3112b9c6feb639eea5ac0ad0feda71",
+        "5c72cdd8bf246932d65702d0b8b9b18d",
+        "5fd39efaad6138b6b6644b89c494d721",
+        "66438161533721480faf5cf84b64601e",
+        "7b257456c5bf40c8aefc7d0c5ed00ab4",
+        "96aef187c36a4dcdfa8337a7cc6de33a",
+        "b93088955b6d0bd9b63f004d713c4a4e",
+        "d0fa1064930aab52cca8f8b6faeb027b",
+        "d8a262fcf8cf8f29fe34f747958b720b"
+      ],
+      "records": [
+        {
+          "trace_id": "26ed48eaec1ff1e0cfff1d1c15fbb48a",
+          "session_id": "a75bb03f-5a8f-48f0-9adb-3b2b8ad7fafa",
+          "scenario_id": "support-0066",
+          "role": "shopper",
+          "reason": "cluster 1 medoid of 34 traces (turn_count=3, tool_call_count=1, distinct_tools=1, has_retrieval=0, tokens=72)"
+        },
+        {
+          "trace_id": "2be0772947f5e8b5b943190257f7ed78",
+          "session_id": "f7f21fbb-e7a0-4c07-9fe3-9075b6e137b4",
+          "scenario_id": "support-0191",
+          "role": "shopper",
+          "reason": "cluster 2 medoid of 17 traces (turn_count=3, tool_call_count=1, distinct_tools=1, has_retrieval=0, tokens=128)"
+        },
+        {
+          "trace_id": "b0f19aa32738f622fc9f8d233fce2eee",
+          "session_id": "f3966d1e-b1f3-4354-b9ee-618255467f99",
+          "scenario_id": "support-0053",
+          "role": "shopper",
+          "reason": "cluster 3 medoid of 1 traces (turn_count=6, tool_call_count=55, distinct_tools=3, has_retrieval=0, tokens=1786)"
+        },
+        {
+          "trace_id": "12300e05e9852dc9f9febcafcc69d374",
+          "session_id": "70a986bd-adae-4dc7-97bb-58da6a10c6e5",
+          "scenario_id": "support-0227",
+          "role": "shopper",
+          "reason": "cluster 4 medoid of 18 traces (turn_count=5, tool_call_count=3, distinct_tools=2, has_retrieval=0, tokens=516)"
+        },
+        {
+          "trace_id": "16f7980a23fbb3f8e06293e4f274920c",
+          "session_id": "2bf4087a-d600-4361-861e-fc084d7e5317",
+          "scenario_id": "support-0003",
+          "role": "support",
+          "reason": "cluster 5 medoid of 31 traces (turn_count=3, tool_call_count=1, distinct_tools=1, has_retrieval=0, tokens=88)"
+        },
+        {
+          "trace_id": "0a82552dbbc9e151cd20c9723104130f",
+          "session_id": "7a9e0f07-41a8-433e-a962-a0590676b6e4",
+          "scenario_id": "support-0156",
+          "role": "shopper",
+          "reason": "cluster 6 medoid of 4 traces (turn_count=2, tool_call_count=0, distinct_tools=0, has_retrieval=0, tokens=76)"
+        },
+        {
+          "trace_id": "691a8ff010e45ff19a843fc7b74ef087",
+          "session_id": "5a6b3e74-04a2-4bd2-8b23-7f0d98473d53",
+          "scenario_id": "support-0247",
+          "role": "shopper",
+          "reason": "cluster 7 medoid of 5 traces (turn_count=2, tool_call_count=0, distinct_tools=0, has_retrieval=0, tokens=39)"
+        },
+        {
+          "trace_id": "bcb18a9bb419d0aa0d3f2744e05abfb9",
+          "session_id": "53605ea8-0dd6-4d9a-b6d6-91c72589d071",
+          "scenario_id": "support-0103",
+          "role": "support",
+          "reason": "cluster 8 medoid of 10 traces (turn_count=3, tool_call_count=1, distinct_tools=1, has_retrieval=0, tokens=230)"
+        },
+        {
+          "trace_id": "8f4e78e3ab28172e7306b19e57a0be9c",
+          "session_id": "c508404d-05b6-48d1-a2ac-cb5182cef167",
+          "scenario_id": "support-0248",
+          "role": "shopper",
+          "reason": "cluster 9 medoid of 12 traces (turn_count=4, tool_call_count=3, distinct_tools=2, has_retrieval=0, tokens=282)"
+        },
+        {
+          "trace_id": "8a944e219a3d04408974751c6755754e",
+          "session_id": "79a64084-00f2-46ac-8293-52c220514f96",
+          "scenario_id": "support-0244",
+          "role": "shopper",
+          "reason": "cluster 10 medoid of 18 traces (turn_count=6, tool_call_count=4, distinct_tools=4, has_retrieval=1, tokens=583)"
+        },
+        {
+          "trace_id": "23a219a5d9c72a7d4933f16c296907d2",
+          "session_id": "49475805-871f-4f4b-967d-07ef7f2913ac",
+          "scenario_id": "support-0157",
+          "role": "shopper",
+          "reason": "cluster 11 medoid of 6 traces (turn_count=2, tool_call_count=0, distinct_tools=0, has_retrieval=0, tokens=52)"
+        },
+        {
+          "trace_id": "8de38cd456ba51612530fbd122f7f61b",
+          "session_id": "3f172ae0-b77c-4741-894a-18a94a578b50",
+          "scenario_id": "support-0092",
+          "role": "shopper",
+          "reason": "cluster 12 medoid of 18 traces (turn_count=4, tool_call_count=3, distinct_tools=2, has_retrieval=1, tokens=506)"
+        },
+        {
+          "trace_id": "27a3211204c400cb477a47ff5e2807e2",
+          "session_id": "63ba8626-3680-4328-a12a-ac21a5960c03",
+          "scenario_id": "support-0057",
+          "role": "shopper",
+          "reason": "cluster 13 medoid of 17 traces (turn_count=3, tool_call_count=1, distinct_tools=1, has_retrieval=0, tokens=648)"
+        },
+        {
+          "trace_id": "d2079fd06f2f785dc752d1d98b563ba1",
+          "session_id": "07811521-724f-446f-a169-561693a0fec9",
+          "scenario_id": "support-0147",
+          "role": "shopper",
+          "reason": "cluster 14 medoid of 23 traces (turn_count=3, tool_call_count=1, distinct_tools=1, has_retrieval=0, tokens=105)"
+        },
+        {
+          "trace_id": "2d1164a8c5ea7a8abf2d277b9c9a67fe",
+          "session_id": "f3d536ed-def9-47c6-bab2-8be61aa79a78",
+          "scenario_id": "support-0136",
+          "role": "merchant",
+          "reason": "cluster 15 medoid of 31 traces (turn_count=4, tool_call_count=2, distinct_tools=2, has_retrieval=0, tokens=153)"
+        }
+      ]
+    }
+  ],
+  "selected_trace_ids": [
+    "448d9d31fc39f18c7240dd64f081affb",
+    "d0fa1064930aab52cca8f8b6faeb027b",
+    "96aef187c36a4dcdfa8337a7cc6de33a",
+    "5fd39efaad6138b6b6644b89c494d721",
+    "5a3112b9c6feb639eea5ac0ad0feda71",
+    "43f669c1b342c3c8e432df80396837f7",
+    "d8a262fcf8cf8f29fe34f747958b720b",
+    "4df840b54f24c25bafd455134fcdf014",
+    "b93088955b6d0bd9b63f004d713c4a4e",
+    "146fd0f2eef655691780f0855bb20d22",
+    "5c72cdd8bf246932d65702d0b8b9b18d",
+    "7b257456c5bf40c8aefc7d0c5ed00ab4",
+    "66438161533721480faf5cf84b64601e",
+    "1953582653c6af4a13d330506e2e54de",
+    "0fdc006f8b5da168b9c234929573d155",
+    "26ed48eaec1ff1e0cfff1d1c15fbb48a",
+    "2be0772947f5e8b5b943190257f7ed78",
+    "b0f19aa32738f622fc9f8d233fce2eee",
+    "12300e05e9852dc9f9febcafcc69d374",
+    "16f7980a23fbb3f8e06293e4f274920c",
+    "0a82552dbbc9e151cd20c9723104130f",
+    "691a8ff010e45ff19a843fc7b74ef087",
+    "bcb18a9bb419d0aa0d3f2744e05abfb9",
+    "8f4e78e3ab28172e7306b19e57a0be9c",
+    "8a944e219a3d04408974751c6755754e",
+    "23a219a5d9c72a7d4933f16c296907d2",
+    "8de38cd456ba51612530fbd122f7f61b",
+    "27a3211204c400cb477a47ff5e2807e2",
+    "d2079fd06f2f785dc752d1d98b563ba1",
+    "2d1164a8c5ea7a8abf2d277b9c9a67fe"
+  ],
+  "selected_session_ids": [
+    "06abb8b8-ffc9-437f-a7c5-81a1ac0ba3e5",
+    "07811521-724f-446f-a169-561693a0fec9",
+    "2bf4087a-d600-4361-861e-fc084d7e5317",
+    "308c55df-003a-40e4-a7d5-67691e0e5666",
+    "3f172ae0-b77c-4741-894a-18a94a578b50",
+    "49475805-871f-4f4b-967d-07ef7f2913ac",
+    "53605ea8-0dd6-4d9a-b6d6-91c72589d071",
+    "5a6b3e74-04a2-4bd2-8b23-7f0d98473d53",
+    "63ba8626-3680-4328-a12a-ac21a5960c03",
+    "64964c85-73b5-490c-80b9-32298de79c81",
+    "70a986bd-adae-4dc7-97bb-58da6a10c6e5",
+    "783cdbf5-700d-4fd9-bd96-a3df91c9b447",
+    "79a64084-00f2-46ac-8293-52c220514f96",
+    "7a9e0f07-41a8-433e-a962-a0590676b6e4",
+    "7ab7eb0e-b62e-4fb2-ab59-116fa1e2bf9c",
+    "8017e3cd-6184-4e9a-8331-c39f887d3a3c",
+    "824cf214-53b6-4880-a986-75e168e748f6",
+    "8ea9faf9-daa0-42f2-8dc1-2dac83f2bf2c",
+    "a75bb03f-5a8f-48f0-9adb-3b2b8ad7fafa",
+    "b2fb35c7-03a9-4c1d-bd01-796e0588acb4",
+    "c1cf0231-45c8-46d0-b180-004fb21605fe",
+    "c508404d-05b6-48d1-a2ac-cb5182cef167",
+    "c9ad4e7e-7865-4fbb-acf4-4e8d9891787d",
+    "d22ff2a4-499a-4385-b834-ff96adb72ec6",
+    "d54e5edd-6b31-4179-bd9f-9b0bd490e13d",
+    "eb7f8cae-1174-4ab3-99c9-376106b8eb62",
+    "f3966d1e-b1f3-4354-b9ee-618255467f99",
+    "f3d536ed-def9-47c6-bab2-8be61aa79a78",
+    "f7f21fbb-e7a0-4c07-9fe3-9075b6e137b4",
+    "fcad8d57-a792-431d-811a-7e998f866234"
+  ],
+  "counts": {
+    "source_traces": 260,
+    "selected_traces": 30,
+    "selected_sessions": 30
+  }
+}
