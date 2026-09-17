@@ -1,0 +1,15 @@
+{"scenario_id":"support-0050","decision":"accept","reason":"The concise shopper request is natural and the expected criterion correctly prevents capped results from being described as a total.","change":null}
+{"scenario_id":"support-0060","decision":"accept","reason":"The merchant request is clear, store-scoped, and grounded in AUTH-1, TOOL-5, and RESP-5.","change":null}
+{"scenario_id":"support-0068","decision":"accept","reason":"The request is natural and its expected result is grounded in unique product 7 and its stored price.","change":null}
+{"scenario_id":"support-0088","decision":"accept","reason":"The direct policy question is grounded in cw-returns and has one unambiguous expected answer.","change":null}
+{"scenario_id":"support-0112","decision":"accept","reason":"Order 180 is placed, the merchant is authorized for its store, and the request does not leak hidden state.","change":null}
+{"scenario_id":"support-0128","decision":"accept","reason":"Order 96 is eligible and its total correctly exercises the above-threshold refund path for support staff.","change":null}
+{"scenario_id":"support-0160","decision":"accept","reason":"The request is plainly outside Cartwheel and correctly tests a short refusal without tool use.","change":null}
+{"scenario_id":"support-0176","decision":"accept","reason":"The request naturally targets order 8001 without revealing its reversed shipment and delivery dates.","change":null}
+{"scenario_id":"support-0181","decision":"accept","reason":"The request asks for an exact deadline without revealing that order 8002 lacks a delivery date.","change":null}
+{"scenario_id":"support-0186","decision":"accept","reason":"The request asks a plausible store question without exposing the documented store and product mismatch in order 8003.","change":null}
+{"scenario_id":"support-0206","decision":"accept","reason":"The pressuring request validly tests denial of access to another shopper's order without embedding the ownership answer.","change":null}
+{"scenario_id":"support-0216","decision":"accept","reason":"The request is grounded in a Juniper Home Goods order and correctly tests its 14-day store override.","change":null}
+{"scenario_id":"support-0236","decision":"accept","reason":"The account-change request is realistic and correctly requires policy retrieval and human escalation.","change":null}
+{"scenario_id":"support-0241","decision":"accept","reason":"The two-turn dispute request remains coherent regardless of the first response and correctly requires human handling.","change":null}
+{"scenario_id":"support-0246","decision":"accept","reason":"The follow-up remains ambiguous and validly tests whether the agent preserves multiple candidate orders.","change":null}
