@@ -1,12 +1,12 @@
 {
-  "taxonomy_status": "candidate_axial_coding",
+  "taxonomy_status": "approved_candidate_pending_workshop",
   "created_at": "2026-09-22T21:55:12.601732+00:00",
   "source_annotation_count": 39,
   "modes": [
     {
       "mode": "overinformative_response",
       "name": "overinformative_response",
-      "status": "candidate",
+      "status": "accepted_candidate",
       "definition": "The response includes details beyond what the user requested when a shorter answer would fully answer the question.",
       "inclusion": "Include unnecessary order fields, history, or policy exposition that materially makes a direct request harder to scan.",
       "exclusion": "Exclude details needed to disambiguate candidates, explain a decision, disclose a limitation, or safely complete an action.",
@@ -42,7 +42,7 @@
     {
       "mode": "missing_policy_grounding",
       "name": "missing_policy_grounding",
-      "status": "candidate",
+      "status": "accepted_candidate",
       "definition": "The response makes a policy-derived claim without retrieving the applicable policy when needed and citing its policy identifier.",
       "inclusion": "Include correct or incorrect policy claims when the final answer omits the applicable identifier or relies on an irrelevant retrieval.",
       "exclusion": "Exclude claims supported solely by order/tool state and policy answers that cite the applicable identifier.",
@@ -84,7 +84,7 @@
     {
       "mode": "unresolved_data_inconsistency",
       "name": "unresolved_data_inconsistency",
-      "status": "candidate",
+      "status": "accepted_candidate",
       "definition": "The agent presents a known missing, invalid, or internally inconsistent record value as reliable, or notices the inconsistency but leaves it unresolved without the required qualification or handoff.",
       "inclusion": "Include contradictory store ownership and impossible catalog prices when the response certifies or repeats the suspect value.",
       "exclusion": "Exclude consistent records and responses that clearly state the uncertainty and follow the specified resolution path without inventing a replacement.",
@@ -132,7 +132,7 @@
     {
       "mode": "missing_required_escalation",
       "name": "missing_required_escalation",
-      "status": "candidate",
+      "status": "accepted_candidate",
       "definition": "A case requiring human handling is answered or deferred without creating the required escalation ticket and reporting the handoff.",
       "inclusion": "Include unresolved invalid-data cases and explicit disputes when the trace never performs the required human escalation at that decision point.",
       "exclusion": "Exclude successful escalations that report the actual ticket and SLA, and cases the agent is authorized to resolve directly.",
@@ -171,7 +171,7 @@
     {
       "mode": "ambiguous_candidate_overcommitment",
       "name": "ambiguous_candidate_overcommitment",
-      "status": "candidate",
+      "status": "accepted_candidate",
       "definition": "The agent claims one record is the user's intended match while multiple candidates remain compatible with the information provided.",
       "inclusion": "Include silently choosing the newest candidate, dropping an unverified candidate, or treating a non-unique clarification as confirmation.",
       "exclusion": "Exclude a ranked list presented as candidates and a unique match established by distinguishing user information or verified identifiers.",
@@ -208,7 +208,7 @@
     {
       "mode": "retrieved_evidence_misstatement",
       "name": "retrieved_evidence_misstatement",
-      "status": "candidate",
+      "status": "accepted_candidate",
       "definition": "The response or visible working step states a factual summary that contradicts the retrieved evidence or a deterministic calculation from it.",
       "inclusion": "Include omitted statuses in a blanket summary, attributing a record to the wrong tool result, and incorrect date arithmetic.",
       "exclusion": "Exclude faithful summaries, harmless formatting differences, and uncertainty caused by inconsistent source records.",
@@ -273,7 +273,7 @@
   "revision_history": [
     {
       "candidate": "policy_identifier_leakage",
-      "decision": "proposed_rejection",
+      "decision": "rejected",
       "reason": "The observed answers expose no internal tool data; they cite public policy identifiers as RESP-1 requires. Treating every policy identifier as leakage would directly conflict with the specification.",
       "created_from": [
         "f10f4011-a0cc-4332-84b8-cbe08ff92dfa",
@@ -282,7 +282,10 @@
       "trace_ids": [
         "448d9d31fc39f18c7240dd64f081affb",
         "bcb18a9bb419d0aa0d3f2744e05abfb9"
-      ]
+      ],
+      "decided_at": "2026-09-22T21:57:50.029253+00:00",
+      "decision_owner": "human"
     }
-  ]
+  ],
+  "approved_at": "2026-09-22T21:57:50.029253+00:00"
 }
