@@ -269,6 +269,92 @@ def add_outlier_flags(sessions: list[dict[str, Any]]) -> None:
                 session["flags"].append(labels[field])
 
 
+def annotation_records(value: Any) -> list[dict[str, Any]]:
+    """Return persisted annotations in either supported on-disk shape."""
+    if isinstance(value, list):
+        return [item for item in value if isinstance(item, dict)]
+    if isinstance(value, dict) and isinstance(value.get("annotations"), list):
+        return [item for item in value["annotations"] if isinstance(item, dict)]
+    return []
+
+
+def reviewed_trace_ids(annotations: list[dict[str, Any]]) -> set[str]:
+    """A trace is reviewed once it has a finding or an explicit clean mark."""
+    return {
+        str(item["trace_id"])
+        for item in annotations
+        if item.get("trace_id")
+        and (item.get("status") == "no_failure" or bool(item.get("note")))
+    }
+
+
+def summarize_review_scope(
+    sessions: list[dict[str, Any]], annotations: list[dict[str, Any]]
+) -> dict[str, int]:
+    """Summarize trace completion and session completion for one scope."""
+    reviewed = reviewed_trace_ids(annotations)
+    trace_count = 0
+    reviewed_trace_count = 0
+    fully_reviewed = partially_reviewed = unreviewed = 0
+
+    for session in sessions:
+        trace_ids = [str(turn.get("trace_id") or "") for turn in session.get("turns", [])]
+        trace_ids = [trace_id for trace_id in trace_ids if trace_id]
+        completed = sum(trace_id in reviewed for trace_id in trace_ids)
+        trace_count += len(trace_ids)
+        reviewed_trace_count += completed
+        if not trace_ids or completed == 0:
+            unreviewed += 1
+        elif completed == len(trace_ids):
+            fully_reviewed += 1
+        else:
+            partially_reviewed += 1
+
+    return {
+        "session_count": len(sessions),
+        "trace_count": trace_count,
+        "reviewed_trace_count": reviewed_trace_count,
+        "unreviewed_trace_count": trace_count - reviewed_trace_count,
+        "fully_reviewed_session_count": fully_reviewed,
+        "partially_reviewed_session_count": partially_reviewed,
+        "unreviewed_session_count": unreviewed,
+    }
+
+
+def build_review_progress(
+    sessions: list[dict[str, Any]],
+    annotations: list[dict[str, Any]],
+    manifest: dict[str, Any],
+) -> dict[str, dict[str, int]]:
+    """Report fixed review-sample and full-dataset scopes side by side.
+
+    Manifest trace ids are selection anchors. Once a session is selected, all
+    of its traces belong to the review sample so follow-up turns are not hidden
+    from completion accounting.
+    """
+    selected_sessions = {
+        str(value) for value in manifest.get("selected_session_ids", []) if value
+    }
+    selected_traces = {
+        str(value) for value in manifest.get("selected_trace_ids", []) if value
+    }
+    for session in sessions:
+        if any(
+            str(turn.get("trace_id") or "") in selected_traces
+            for turn in session.get("turns", [])
+        ):
+            selected_sessions.add(str(session.get("session_id") or ""))
+    sample = [
+        session
+        for session in sessions
+        if str(session.get("session_id") or "") in selected_sessions
+    ]
+    return {
+        "sample": summarize_review_scope(sample, annotations),
+        "overall": summarize_review_scope(sessions, annotations),
+    }
+
+
 def label_files() -> dict[str, list[dict[str, Any]]]:
     directory = STATE_DIR / "labels"
     result: dict[str, list[dict[str, Any]]] = {}
@@ -348,6 +434,7 @@ class Handler(BaseHTTPRequestHandler):
         data = json.dumps(value, ensure_ascii=False).encode()
         self.send_response(status)
         self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Cache-Control", "no-store")
         self.send_header("Content-Length", str(len(data)))
         self.end_headers()
         self.wfile.write(data)
@@ -359,6 +446,7 @@ class Handler(BaseHTTPRequestHandler):
         data = path.read_bytes()
         self.send_response(200)
         self.send_header("Content-Type", content_type)
+        self.send_header("Cache-Control", "no-store")
         self.send_header("Content-Length", str(len(data)))
         self.end_headers()
         self.wfile.write(data)
@@ -378,6 +466,13 @@ class Handler(BaseHTTPRequestHandler):
             self.send_file(HERE / "index.html", "text/html; charset=utf-8")
         elif path == "/api/sessions":
             self.send_json(load_sessions())
+        elif path == "/api/progress":
+            sessions = load_sessions()
+            annotations = annotation_records(
+                read_json(STATE_FILES["annotations"], DEFAULTS["annotations"])
+            )
+            manifest = read_json(STATE_FILES["manifest"], DEFAULTS["manifest"])
+            self.send_json(build_review_progress(sessions, annotations, manifest))
         elif path == "/api/labels":
             self.send_json(label_files())
         elif path.startswith("/api/") and path[5:] in STATE_FILES:
