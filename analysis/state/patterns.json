@@ -1,1 +1,288 @@
-{"modes": []}
+{
+  "taxonomy_status": "candidate_axial_coding",
+  "created_at": "2026-09-22T21:55:12.601732+00:00",
+  "source_annotation_count": 39,
+  "modes": [
+    {
+      "mode": "overinformative_response",
+      "name": "overinformative_response",
+      "status": "candidate",
+      "definition": "The response includes details beyond what the user requested when a shorter answer would fully answer the question.",
+      "inclusion": "Include unnecessary order fields, history, or policy exposition that materially makes a direct request harder to scan.",
+      "exclusion": "Exclude details needed to disambiguate candidates, explain a decision, disclose a limitation, or safely complete an action.",
+      "likely_evaluator": "llm_judge",
+      "requirement_source": {
+        "status": "existing_spec",
+        "references": [
+          "RESP-5"
+        ]
+      },
+      "created_from": [
+        "22c0621f-53ba-49cd-9913-fd2716d27ccf",
+        "d6c0f9fb-6197-4da1-b5df-70f6b54a34f7",
+        "b3a9352e-6615-4bea-83cf-0c3a47804c54",
+        "66868506-0243-4330-a5a6-484dea00ca38",
+        "9cdc4de8-622a-4e75-aa58-1a0b0caf03db"
+      ],
+      "positive_trace_ids": [
+        "b93088955b6d0bd9b63f004d713c4a4e",
+        "16f7980a23fbb3f8e06293e4f274920c",
+        "66438161533721480faf5cf84b64601e",
+        "146fd0f2eef655691780f0855bb20d22",
+        "d0fa1064930aab52cca8f8b6faeb027b"
+      ],
+      "positive_count": 5,
+      "example_annotations": [
+        "Probably didn't need to include the total, so just a little bit of excessive information. Probably the same with shipped, because it asks for current status and the current status is delivered.",
+        "Same thing on this one: lots of extra information could have just been like, \"Hey, your order was delivered on X date.\"",
+        "Same thing here. Should say something like, \"Order 44 was delivered on September 6, 2025.\""
+      ],
+      "close_negative_trace_ids": []
+    },
+    {
+      "mode": "missing_policy_grounding",
+      "name": "missing_policy_grounding",
+      "status": "candidate",
+      "definition": "The response makes a policy-derived claim without retrieving the applicable policy when needed and citing its policy identifier.",
+      "inclusion": "Include correct or incorrect policy claims when the final answer omits the applicable identifier or relies on an irrelevant retrieval.",
+      "exclusion": "Exclude claims supported solely by order/tool state and policy answers that cite the applicable identifier.",
+      "likely_evaluator": "code_check_or_llm_judge",
+      "requirement_source": {
+        "status": "existing_spec",
+        "references": [
+          "RESP-1"
+        ]
+      },
+      "created_from": [
+        "ecd23de2-ca9d-4a70-b143-d5b44e2eb5c2",
+        "70affc49-d1cc-4154-81bb-d0e03f9951bb",
+        "4449f6b5-65c7-4d04-b96a-e995f08ec69b",
+        "27766a31-dbd4-4e54-a7ed-e424f26c5cf3",
+        "0d8d40c2-c626-41a5-b5e3-5598526b62cf",
+        "db195ef0-9eaa-4072-b802-17fb2a8d15dc",
+        "8c24b3f0-af77-4c6c-ab10-7d745276768d",
+        "91112014-6c3d-4eb6-ad89-aadd73cddd0c"
+      ],
+      "positive_trace_ids": [
+        "5c72cdd8bf246932d65702d0b8b9b18d",
+        "e160cb0ad36ecd74ee9b3f4677634397",
+        "6f8d83d186559767e79e4bb5c2c827fe",
+        "a89ef390d77db50b38a46fbf6ec9f4cf",
+        "97e07ea163a4302fcee60f7648c06388",
+        "eca5562d6e27564f3590513832dbeecd",
+        "4c5a0853d37759282ab72581edb71848",
+        "39987799456fb338588b4fc6eabee85b"
+      ],
+      "positive_count": 8,
+      "example_annotations": [
+        "Missing dispute-policy grounding/citation. Turn 1 calls get_order and then escalate_to_human without retrieving cw-disputes; the final answer explains its dispute-handling limit but never cites cw-disputes, which the expected behavior explicitly requires. Human escalation itself succeeds (ticket #177, SLA 24 hours), and the assistant does not claim resolution. Retrieve the dispute policy and cite it when explaining the human-review path; do not equate refund_eligible=false with dispute eligibility.",
+        "Uncited platform-permission policy claim. After get_order(1) returns permission_denied, the final answer correctly refuses disclosure, but asserts that Cartwheel only allows shoppers to view their own orders without retrieving/citing the applicable policy ID (cw-roles). The system requires a policy ID for every policy claim. Keep the refusal, and ground/cite the general permission rule; no cross-user data was disclosed.",
+        "Cancellation restriction stated without policy grounding/citation. get_order(9193) establishes delivered status, but the assistant then states that the order cannot be cancelled without any policy lookup or citation to cw-cancellations. The decision is consistent with the cancellation rule and no invalid action occurs; the failure is omitting the required source for a policy claim. Retrieve/cite cw-cancellations when explaining the restriction."
+      ],
+      "close_negative_trace_ids": []
+    },
+    {
+      "mode": "unresolved_data_inconsistency",
+      "name": "unresolved_data_inconsistency",
+      "status": "candidate",
+      "definition": "The agent presents a known missing, invalid, or internally inconsistent record value as reliable, or notices the inconsistency but leaves it unresolved without the required qualification or handoff.",
+      "inclusion": "Include contradictory store ownership and impossible catalog prices when the response certifies or repeats the suspect value.",
+      "exclusion": "Exclude consistent records and responses that clearly state the uncertainty and follow the specified resolution path without inventing a replacement.",
+      "likely_evaluator": "llm_judge",
+      "requirement_source": {
+        "status": "existing_spec",
+        "references": [
+          "RESP-3",
+          "dq-order-store-mismatch",
+          "dq-product-invalid-price"
+        ]
+      },
+      "created_from": [
+        "e0b54ec1-6663-4f75-b456-157eafab668a",
+        "34c300a1-6865-4153-ad6a-06aac6b0b489",
+        "d1ce10b8-ba53-49f0-9c02-ae2e9994ec0d",
+        "bd26eb3d-5587-4f9a-9d66-60cb0e381a82",
+        "9403384d-00ce-433e-81c2-6a1e66f64028",
+        "31544e88-fdf6-4571-b015-94ecbeb0a945",
+        "3da1e3c6-8d1d-4420-933d-befe2a690989",
+        "7c08cf7c-38e2-4db2-8436-c5fafd1dc4d8",
+        "e5403b2e-5abb-4c1c-beef-59108080aee8",
+        "3f3e210d-7240-4bc8-836a-a159b976733e"
+      ],
+      "positive_trace_ids": [
+        "eb44c6c8197b9409e8a4430ba28eeb71",
+        "917a78db3ad8929d90e6109540523972",
+        "74d7af1acfd9da8d3db9049965f18ef8",
+        "6fcee2affabfde2aaaaff8e3a88309b5",
+        "dec9f22e39c0b8e004d509035da9ddb3",
+        "ddc0cc36de3f11fad50d41e3d15d5635",
+        "b370b17c47b0c4fdfce33caebd9f3679",
+        "5d259e094b10478b579946e04603b4ee",
+        "3d6cbec483a0c8e81fd4c53773f9ec66",
+        "9f4634886dbbb78e1857820f47edfbfe"
+      ],
+      "positive_count": 10,
+      "example_annotations": [
+        "Unqualified fulfillment claim in a store-mismatch case. The case is explicitly tagged inconsistent_data with evidence reference dq-order-store-mismatch. After only get_order(8003), the assistant states that the jam-trio order was fulfilled by Blue Heron Ceramics, copying store_id=1/store_name from the flagged order record without checking product_id=553 against catalog/store evidence, acknowledging uncertainty, or escalating. It should verify the store association or report the discrepancy rather than certify the inconsistent field. The correct fulfilling store is not exposed in this trace, so this finding does not assert an alternative store.",
+        "Unqualified fulfillment claim in a store-mismatch case. The case is explicitly tagged inconsistent_data with evidence reference dq-order-store-mismatch. After only get_order(8003), the assistant states that the jam-trio order was fulfilled by Blue Heron Ceramics, copying store_id=1/store_name from the flagged order record without checking product_id=553 against catalog/store evidence, acknowledging uncertainty, or escalating. It should verify the store association or report the discrepancy rather than certify the inconsistent field. The correct fulfilling store is not exposed in this trace, so this finding does not assert an alternative store.",
+        "Unqualified fulfillment claim in a store-mismatch case. The case is explicitly tagged inconsistent_data with evidence reference dq-order-store-mismatch. After only get_order(8003), the assistant states that the jam-trio order was fulfilled by Blue Heron Ceramics, copying store_id=1/store_name from the flagged order record without checking product_id=553 against catalog/store evidence, acknowledging uncertainty, or escalating. It should verify the store association or report the discrepancy rather than certify the inconsistent field. The correct fulfilling store is not exposed in this trace, so this finding does not assert an alternative store."
+      ],
+      "close_negative_trace_ids": []
+    },
+    {
+      "mode": "missing_required_escalation",
+      "name": "missing_required_escalation",
+      "status": "candidate",
+      "definition": "A case requiring human handling is answered or deferred without creating the required escalation ticket and reporting the handoff.",
+      "inclusion": "Include unresolved invalid-data cases and explicit disputes when the trace never performs the required human escalation at that decision point.",
+      "exclusion": "Exclude successful escalations that report the actual ticket and SLA, and cases the agent is authorized to resolve directly.",
+      "likely_evaluator": "code_check",
+      "requirement_source": {
+        "status": "needs_spec_clarification_for_invalid_data",
+        "references": [
+          "ESC-3",
+          "ESC-4"
+        ]
+      },
+      "created_from": [
+        "31544e88-fdf6-4571-b015-94ecbeb0a945",
+        "3da1e3c6-8d1d-4420-933d-befe2a690989",
+        "7c08cf7c-38e2-4db2-8436-c5fafd1dc4d8",
+        "e5403b2e-5abb-4c1c-beef-59108080aee8",
+        "3f3e210d-7240-4bc8-836a-a159b976733e",
+        "11416c92-e743-42de-9ff1-9ba2ae56c85f"
+      ],
+      "positive_trace_ids": [
+        "ddc0cc36de3f11fad50d41e3d15d5635",
+        "b370b17c47b0c4fdfce33caebd9f3679",
+        "5d259e094b10478b579946e04603b4ee",
+        "3d6cbec483a0c8e81fd4c53773f9ec66",
+        "9f4634886dbbb78e1857820f47edfbfe",
+        "600ba1cca926355520391ce4ce9a1c81"
+      ],
+      "positive_count": 6,
+      "example_annotations": [
+        "Invalid negative price presented without qualification. search_products returns price_usd=-5 for Rustic Pitcher (product 4); the final answer simply says it is listed at -$5.00, with no warning, verification, or human escalation. Flag the corrupt price, avoid treating it as a valid purchase price, and escalate for confirmation rather than invent a replacement.",
+        "Recognized invalid catalog price left unresolved without required escalation. search_products returns price_usd=-5 for Rustic Pitcher (product 4). The final answer acknowledges that -$5.00 is unusual or a possible error, but no escalate_to_human call is made and no ticket/follow-up is reported; suggesting the user check with the store does not perform the handoff. The system requires human escalation when unsure. Confirm only that a listing was found, withhold a reliable price, and create a ticket to verify it.",
+        "Recognized invalid catalog price left unresolved without required escalation. search_products returns price_usd=-5 for Rustic Pitcher (product 4). The final answer acknowledges that -$5.00 is unusual or a possible error, but no escalate_to_human call is made and no ticket/follow-up is reported; suggesting the user check with the store does not perform the handoff. The system requires human escalation when unsure. Confirm only that a listing was found, withhold a reliable price, and create a ticket to verify it."
+      ],
+      "close_negative_trace_ids": []
+    },
+    {
+      "mode": "ambiguous_candidate_overcommitment",
+      "name": "ambiguous_candidate_overcommitment",
+      "status": "candidate",
+      "definition": "The agent claims one record is the user's intended match while multiple candidates remain compatible with the information provided.",
+      "inclusion": "Include silently choosing the newest candidate, dropping an unverified candidate, or treating a non-unique clarification as confirmation.",
+      "exclusion": "Exclude a ranked list presented as candidates and a unique match established by distinguishing user information or verified identifiers.",
+      "likely_evaluator": "llm_judge",
+      "requirement_source": {
+        "status": "existing_spec",
+        "references": [
+          "TOOL-6",
+          "RESP-3"
+        ]
+      },
+      "created_from": [
+        "633913ff-1cf3-4952-9680-1f922825ec73",
+        "6a419362-49b0-48b1-8194-39c29f8977b3",
+        "a2256418-d173-4b8f-973b-353f9f44373b",
+        "aff83d85-ab11-41d8-a7d9-c0619899449f",
+        "f77c6175-6c14-4b5d-aa09-0410359a4f96"
+      ],
+      "positive_trace_ids": [
+        "339e28bacbcc3dcb9a9f38d384ccc446",
+        "691a8ff010e45ff19a843fc7b74ef087",
+        "8f4e78e3ab28172e7306b19e57a0be9c",
+        "1d675dd4b33042d585d195aef9a66010",
+        "0b00fa2a8a4006a0966a8a56c971c102"
+      ],
+      "positive_count": 5,
+      "example_annotations": [
+        "Prematurely resolves an ambiguous order to the newest candidate. Three Heavy-Duty Vase orders match (4455, 4127, 3980), all delivered. The user's clarification 'recent and delivered' does not uniquely select 4455, yet the assistant retrieves it and declares 'Your recent delivered order is' #4455. An additional get_order confirms that candidate's details, not the user's intent. Present likely candidates or ask for amount/date confirmation before claiming a unique match.",
+        "Ambiguity collapsed after insufficient clarification. Orders 4720, 6300, and 4041 are all delivered; 'recent and already delivered' does not uniquely identify the intended order. The response presents only #4720 as the answer by silently interpreting 'recent' as 'most recent'. Keep it a candidate and request distinguishing amount/date confirmation, as required by TOOL-6/RESP-3.",
+        "Unsupported narrowing of order candidates. find_order returns Blue Heron Ceramics/store 1 candidates 8255 (product 28), 8022 (product 28), and 4202 (product 22), plus a different-store result. The assistant declares only the two product-28 orders match and omits 4202 without a catalog lookup proving product 22 is not the requested bowl. It should verify product identities or retain unresolved same-store candidates before presenting the candidate set as complete."
+      ],
+      "close_negative_trace_ids": []
+    },
+    {
+      "mode": "retrieved_evidence_misstatement",
+      "name": "retrieved_evidence_misstatement",
+      "status": "candidate",
+      "definition": "The response or visible working step states a factual summary that contradicts the retrieved evidence or a deterministic calculation from it.",
+      "inclusion": "Include omitted statuses in a blanket summary, attributing a record to the wrong tool result, and incorrect date arithmetic.",
+      "exclusion": "Exclude faithful summaries, harmless formatting differences, and uncertainty caused by inconsistent source records.",
+      "likely_evaluator": "code_check_or_llm_judge",
+      "requirement_source": {
+        "status": "existing_spec",
+        "references": [
+          "RESP-3"
+        ]
+      },
+      "created_from": [
+        "64b35143-0080-4a3b-bed2-855356669e87",
+        "f7d6b0f7-cba5-4531-b743-7fd6f04f081f",
+        "689e5777-e7ae-4d25-bc95-9731af6b763d"
+      ],
+      "positive_trace_ids": [
+        "d2442c50966e65d9cbe22adb360e39a0",
+        "9d655c9ffdd73635ec6e526a3be4195e",
+        "9afcd8dae138e88080ffc6e384540917"
+      ],
+      "positive_count": 3,
+      "example_annotations": [
+        "Incorrect summary of retrieved order statuses. The final answer says the account's recent orders are 'all currently showing as delivered or cancelled,' but list_my_orders includes order 3988 with status='refunded'. The requested order 2 remains correctly protected by permission_denied; the failure is the inaccurate factual summary of the user's own orders. Include refunded in the summary or avoid the unnecessary blanket claim.",
+        "Inaccurate description of the just-retrieved evidence. Immediately after list_my_orders, the working step claims that the 'recent-order list shows ... #5018, #3143, and #2774'. That tool result does not contain #2774; it came from the earlier find_order/get_order calls. The final answer appropriately preserves multiple candidates, but the trace conflates older search evidence with the recent-order result. Attribute #2774 to the earlier lookup and describe the current result accurately.",
+        "Incorrect shipping-duration arithmetic. get_order gives shipped_at=2026-06-24 and delivered_at=2026-06-26. The final answer copies both dates correctly but states '1 day after shipment'; the elapsed transit interval is 2 days. The 3-day interval from ordering on June 23 is correct. Calculate date differences consistently and report 2 days from shipment to delivery."
+      ],
+      "close_negative_trace_ids": []
+    }
+  ],
+  "ungrouped_annotations": [
+    {
+      "annotation_id": "96cbdbcb-07fd-4f93-9c1a-07c3dc2c9349",
+      "trace_id": "1953582653c6af4a13d330506e2e54de",
+      "note": "This might just be personal preference, but I would think that the user would want the items in each order so they can actually see what the orders were, not just dollar amounts. Not necessarily a failure, though.",
+      "reason": "Insufficient confirmed examples for a stable binary mode; retain for depth search or specification review."
+    },
+    {
+      "annotation_id": "a8d60417-1828-44a8-98d6-fa4209235d3b",
+      "trace_id": "b0f19aa32738f622fc9f8d233fce2eee",
+      "note": "this just feels supper inefficient",
+      "reason": "Insufficient confirmed examples for a stable binary mode; retain for depth search or specification review."
+    },
+    {
+      "annotation_id": "e439ad08-21c4-45d4-98ab-edef56009555",
+      "trace_id": "2be0772947f5e8b5b943190257f7ed78",
+      "note": "this should have gone deeper and broken down what what the differences were, sizes etc",
+      "reason": "Insufficient confirmed examples for a stable binary mode; retain for depth search or specification review."
+    },
+    {
+      "annotation_id": "f51cefb9-31fa-441f-a2dc-37d6f213063d",
+      "trace_id": "6fd2b3e47e54956beaaa35febefeae35",
+      "note": "Misreads punctuation as an incomplete order identifier. The user explicitly asks about 'order 6??'; the assistant never calls get_order(6), instead lists recent orders and treats '6??' as a partial ID requiring completion with 6182/6746/6562. Question marks express urgency here, not missing digits. Normalize the ID to 6, attempt the authorized lookup, and handle permission_denied without leaking data; do not redirect a clear request to unrelated orders.",
+      "reason": "Insufficient confirmed examples for a stable binary mode; retain for depth search or specification review."
+    },
+    {
+      "annotation_id": "6f391ada-33c5-49bb-8695-f64a0fae8b8b",
+      "trace_id": "d1d01537f7018a143e8e27f41a6c0c66",
+      "note": "Unsupported promise of in-chat account-change handling. The first working step promises a ticket 'so this can be handled in chat'; the retrieved cw-account-security policy says account changes happen only through account settings. The final answer guarantees a human will follow up 'in chat within 24 hours' to process the phone-number change, although escalate_to_human confirms only ticket 173 and sla_hours=24, not a chat channel or in-chat change capability. Requesting a preferred channel in ticket context is not confirmation. Report the ticket/SLA and approved settings-based process without guaranteeing the user's requested channel.",
+      "reason": "Insufficient confirmed examples for a stable binary mode; retain for depth search or specification review."
+    }
+  ],
+  "revision_history": [
+    {
+      "candidate": "policy_identifier_leakage",
+      "decision": "proposed_rejection",
+      "reason": "The observed answers expose no internal tool data; they cite public policy identifiers as RESP-1 requires. Treating every policy identifier as leakage would directly conflict with the specification.",
+      "created_from": [
+        "f10f4011-a0cc-4332-84b8-cbe08ff92dfa",
+        "07259360-da36-4ce9-a3b5-63bc332a7885"
+      ],
+      "trace_ids": [
+        "448d9d31fc39f18c7240dd64f081affb",
+        "bcb18a9bb419d0aa0d3f2744e05abfb9"
+      ]
+    }
+  ]
+}
