@@ -29,6 +29,7 @@ log = logging.getLogger("cartwheel.instrument")
 
 _genai_instrumented = False
 _openai_tracing_enabled = False
+_workshop_client: Any | None = None
 
 
 def configure_model_tracing(*, openai_model: bool) -> None:
@@ -108,6 +109,43 @@ def setup_tracing() -> bool:
         return False
     log.info("tracing enabled; spans go to %s", os.environ.get("LANGFUSE_HOST"))
     return True
+
+
+def setup_workshop() -> Any | None:
+    """Create the local Workshop client without taking over OpenTelemetry.
+
+    Langfuse owns this process's OTel provider. Workshop therefore receives
+    explicit interaction events only; the existing provider continues to
+    export agent, model, and tool spans to Langfuse.
+    """
+    global _workshop_client
+    local_url = os.environ.get("RAINDROP_LOCAL_DEBUGGER", "").strip()
+    if not local_url:
+        return None
+    if _workshop_client is None:
+        from raindrop import Raindrop
+
+        _workshop_client = Raindrop(
+            local_workshop_url=local_url,
+            tracing_enabled=False,
+            auto_instrument=False,
+            project_id="cartwheel-homeworks",
+        )
+        log.info("Raindrop Workshop interaction capture enabled")
+    return _workshop_client
+
+
+def workshop_client() -> Any | None:
+    """Return the configured local Workshop client, if enabled."""
+    return _workshop_client
+
+
+def shutdown_workshop() -> None:
+    """Drain pending Workshop events during application shutdown."""
+    global _workshop_client
+    if _workshop_client is not None:
+        _workshop_client.shutdown()
+        _workshop_client = None
 
 
 def record_tool_result(ctx: "AuthContext", result: dict[str, Any]) -> None:

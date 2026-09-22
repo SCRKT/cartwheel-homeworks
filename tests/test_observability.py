@@ -3,10 +3,13 @@
 from __future__ import annotations
 
 from pathlib import Path
+from typing import Any
 
 import pytest
+import raindrop
 from fastapi import HTTPException
 
+from observability import instrument
 from server import app as server_app
 
 
@@ -46,3 +49,34 @@ def test_token_cannot_authorize_another_session() -> None:
         )
 
     assert exc_info.value.status_code == 403
+
+
+def test_workshop_uses_manual_events_without_otel_ownership(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    configured: dict[str, Any] = {}
+
+    class FakeRaindrop:
+        def __init__(self, **kwargs: Any) -> None:
+            configured.update(kwargs)
+
+        def shutdown(self) -> None:
+            configured["shutdown"] = True
+
+    monkeypatch.setenv("RAINDROP_LOCAL_DEBUGGER", "http://localhost:5899/v1/")
+    monkeypatch.setattr(raindrop, "Raindrop", FakeRaindrop)
+    monkeypatch.setattr(instrument, "_workshop_client", None)
+
+    client = instrument.setup_workshop()
+
+    assert isinstance(client, FakeRaindrop)
+    assert configured == {
+        "local_workshop_url": "http://localhost:5899/v1/",
+        "tracing_enabled": False,
+        "auto_instrument": False,
+        "project_id": "cartwheel-homeworks",
+    }
+
+    instrument.shutdown_workshop()
+    assert configured["shutdown"] is True
+    assert instrument.workshop_client() is None

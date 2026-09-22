@@ -41,7 +41,13 @@ from agent import db
 from agent.agent import build_agent, prompt_version
 from agent.auth import ROLES, AuthContext
 from agent.config import REPO_ROOT, db_path
-from observability.instrument import load_env, setup_tracing
+from observability.instrument import (
+    load_env,
+    setup_tracing,
+    setup_workshop,
+    shutdown_workshop,
+    workshop_client,
+)
 
 MAX_TURNS = 12  # cap runaway loops; keeps conversations bounded
 SESSIONS_DB = REPO_ROOT / ".sessions.db"
@@ -53,7 +59,11 @@ _tracer = trace.get_tracer("cartwheel.server")
 async def lifespan(app: FastAPI) -> AsyncIterator[None]:
     load_env()
     setup_tracing()  # no-op with a warning if LANGFUSE_PUBLIC_KEY is unset
-    yield
+    setup_workshop()  # manual events only; Langfuse retains OTel ownership
+    try:
+        yield
+    finally:
+        shutdown_workshop()
 
 
 app = FastAPI(title="Cartwheel support agent", lifespan=lifespan)
@@ -190,50 +200,82 @@ async def post_message(
     agent = build_agent(ctx, model=body.model)
     version = prompt_version()
     trace_content = os.environ.get("TRACELOOP_TRACE_CONTENT", "").lower() == "true"
+    workshop = workshop_client()
+    interaction = (
+        workshop.begin(
+            user_id=str(ctx.user_id),
+            event="support_message",
+            input=body.message,
+            convo_id=session_id,
+            model=body.model or os.environ.get("CARTWHEEL_MODEL"),
+            properties={
+                "session_id": session_id,
+                "user_role": ctx.role,
+                "prompt_version": version,
+                **(
+                    {"scenario_id": body.scenario_id}
+                    if body.scenario_id
+                    else {}
+                ),
+            },
+        )
+        if workshop is not None
+        else None
+    )
 
-    with _tracer.start_as_current_span("cartwheel.session_message") as span:
-        if span.is_recording():
-            span.set_attribute("cartwheel.session_id", session_id)
-            span.set_attribute("cartwheel.user_role", ctx.role)
-            span.set_attribute("cartwheel.user_id", str(ctx.user_id))
-            span.set_attribute("cartwheel.prompt_version", version)
-            if body.scenario_id:
-                span.set_attribute("cartwheel.scenario_id", body.scenario_id)
-            if trace_content:
+    try:
+        with _tracer.start_as_current_span("cartwheel.session_message") as span:
+            if span.is_recording():
+                span.set_attribute("cartwheel.session_id", session_id)
+                span.set_attribute("cartwheel.user_role", ctx.role)
+                span.set_attribute("cartwheel.user_id", str(ctx.user_id))
+                span.set_attribute("cartwheel.prompt_version", version)
+                if body.scenario_id:
+                    span.set_attribute("cartwheel.scenario_id", body.scenario_id)
+                if trace_content:
+                    span.set_attribute(
+                        "gen_ai.input.messages",
+                        json.dumps(
+                            [
+                                {
+                                    "role": "user",
+                                    "parts": [
+                                        {"type": "text", "content": body.message}
+                                    ],
+                                }
+                            ]
+                        ),
+                    )
+
+            result = await Runner.run(
+                agent,
+                body.message,
+                session=session,
+                context=ctx,
+                max_turns=MAX_TURNS,
+            )
+            reply = str(result.final_output)
+            if span.is_recording() and trace_content:
                 span.set_attribute(
-                    "gen_ai.input.messages",
+                    "gen_ai.output.messages",
                     json.dumps(
                         [
                             {
-                                "role": "user",
-                                "parts": [
-                                    {"type": "text", "content": body.message}
-                                ],
+                                "role": "assistant",
+                                "parts": [{"type": "text", "content": reply}],
                             }
                         ]
                     ),
                 )
-
-        result = await Runner.run(
-            agent,
-            body.message,
-            session=session,
-            context=ctx,
-            max_turns=MAX_TURNS,
-        )
-        reply = str(result.final_output)
-        if span.is_recording() and trace_content:
-            span.set_attribute(
-                "gen_ai.output.messages",
-                json.dumps(
-                    [
-                        {
-                            "role": "assistant",
-                            "parts": [{"type": "text", "content": reply}],
-                        }
-                    ]
-                ),
+    except Exception as exc:
+        if interaction is not None:
+            interaction.finish(
+                properties={"outcome": "error", "error_type": type(exc).__name__}
             )
+        raise
+
+    if interaction is not None:
+        interaction.finish(output=reply, properties={"outcome": "success"})
 
     return {"session_id": session_id, "reply": reply, "prompt_version": version}
 
