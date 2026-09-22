@@ -1,1 +1,1254 @@
-{"annotations": []}
+{
+  "annotations": [
+    {
+      "id": "22c0621f-53ba-49cd-9913-fd2716d27ccf",
+      "session_id": "eb7f8cae-1174-4ab3-99c9-376106b8eb62",
+      "trace_id": "b93088955b6d0bd9b63f004d713c4a4e",
+      "scenario_id": "support-0001",
+      "note": "Probably didn't need to include the total, so just a little bit of excessive information. Probably the same with shipped, because it asks for current status and the current status is delivered.",
+      "status": "open_code",
+      "created_at": "2026-09-18T14:45:45.974Z",
+      "author": "human"
+    },
+    {
+      "id": "d6c0f9fb-6197-4da1-b5df-70f6b54a34f7",
+      "session_id": "2bf4087a-d600-4361-861e-fc084d7e5317",
+      "trace_id": "16f7980a23fbb3f8e06293e4f274920c",
+      "scenario_id": "support-0003",
+      "note": "Same thing on this one: lots of extra information could have just been like, \"Hey, your order was delivered on X date.\"",
+      "status": "open_code",
+      "created_at": "2026-09-18T14:46:32.307Z",
+      "author": "human"
+    },
+    {
+      "id": "b3a9352e-6615-4bea-83cf-0c3a47804c54",
+      "session_id": "783cdbf5-700d-4fd9-bd96-a3df91c9b447",
+      "trace_id": "66438161533721480faf5cf84b64601e",
+      "scenario_id": "support-0038",
+      "note": "Same thing here. Should say something like, \"Order 44 was delivered on September 6, 2025.\"",
+      "status": "open_code",
+      "created_at": "2026-09-18T14:47:03.534Z",
+      "author": "human"
+    },
+    {
+      "id": "96cbdbcb-07fd-4f93-9c1a-07c3dc2c9349",
+      "session_id": "8017e3cd-6184-4e9a-8331-c39f887d3a3c",
+      "trace_id": "1953582653c6af4a13d330506e2e54de",
+      "scenario_id": "support-0046",
+      "note": "This might just be personal preference, but I would think that the user would want the items in each order so they can actually see what the orders were, not just dollar amounts. Not necessarily a failure, though.",
+      "status": "open_code",
+      "created_at": "2026-09-18T14:49:39.312Z",
+      "author": "human"
+    },
+    {
+      "id": "e8a31218-1732-490a-92aa-4f6252714fa3",
+      "session_id": "8017e3cd-6184-4e9a-8331-c39f887d3a3c",
+      "trace_id": "1953582653c6af4a13d330506e2e54de",
+      "scenario_id": "support-0046",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-18T14:49:40.519Z",
+      "author": "human"
+    },
+    {
+      "id": "a8d60417-1828-44a8-98d6-fa4209235d3b",
+      "session_id": "f3966d1e-b1f3-4354-b9ee-618255467f99",
+      "trace_id": "b0f19aa32738f622fc9f8d233fce2eee",
+      "scenario_id": "support-0053",
+      "note": "this just feels supper inefficient",
+      "status": "open_code",
+      "created_at": "2026-09-21T18:35:40.235Z",
+      "author": "human"
+    },
+    {
+      "id": "06953025-1442-41e6-ac32-0065d45233ba",
+      "session_id": "63ba8626-3680-4328-a12a-ac21a5960c03",
+      "trace_id": "27a3211204c400cb477a47ff5e2807e2",
+      "scenario_id": "support-0057",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-21T18:36:16.506Z",
+      "author": "human"
+    },
+    {
+      "id": "3b89362f-4d3b-47eb-85b8-acdaa521cc3c",
+      "session_id": "06abb8b8-ffc9-437f-a7c5-81a1ac0ba3e5",
+      "trace_id": "96aef187c36a4dcdfa8337a7cc6de33a",
+      "scenario_id": "support-0058",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-21T18:36:50.978Z",
+      "author": "human"
+    },
+    {
+      "id": "02eadb18-9e17-4a3d-8444-0b756fef3b8d",
+      "session_id": "a75bb03f-5a8f-48f0-9adb-3b2b8ad7fafa",
+      "trace_id": "26ed48eaec1ff1e0cfff1d1c15fbb48a",
+      "scenario_id": "support-0066",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-21T18:37:19.818Z",
+      "author": "human"
+    },
+    {
+      "id": "c7d20d59-5c20-4f75-bc1d-6baf27af8488",
+      "session_id": "c9ad4e7e-7865-4fbb-acf4-4e8d9891787d",
+      "trace_id": "d8a262fcf8cf8f29fe34f747958b720b",
+      "scenario_id": "support-0073",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-21T18:37:26.968Z",
+      "author": "human"
+    },
+    {
+      "id": "7e19dfde-7439-48cc-be1b-f5fa04e740fe",
+      "session_id": "3f172ae0-b77c-4741-894a-18a94a578b50",
+      "trace_id": "8de38cd456ba51612530fbd122f7f61b",
+      "scenario_id": "support-0092",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-21T19:06:11.127Z",
+      "author": "human"
+    },
+    {
+      "id": "f10f4011-a0cc-4332-84b8-cbe08ff92dfa",
+      "session_id": "d22ff2a4-499a-4385-b834-ff96adb72ec6",
+      "trace_id": "448d9d31fc39f18c7240dd64f081affb",
+      "scenario_id": "support-0095",
+      "note": "leaked policy tag",
+      "status": "open_code",
+      "created_at": "2026-09-21T21:25:01.009Z",
+      "author": "human"
+    },
+    {
+      "id": "07259360-da36-4ce9-a3b5-63bc332a7885",
+      "session_id": "53605ea8-0dd6-4d9a-b6d6-91c72589d071",
+      "trace_id": "bcb18a9bb419d0aa0d3f2744e05abfb9",
+      "scenario_id": "support-0103",
+      "note": "policy leakage - unless those are links",
+      "status": "open_code",
+      "created_at": "2026-09-22T14:19:38.581Z",
+      "author": "human"
+    },
+    {
+      "id": "8544b997-a0df-480b-8f38-816757e178af",
+      "session_id": "53605ea8-0dd6-4d9a-b6d6-91c72589d071",
+      "trace_id": "bcb18a9bb419d0aa0d3f2744e05abfb9",
+      "scenario_id": "support-0103",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T14:19:39.476Z",
+      "author": "human"
+    },
+    {
+      "id": "687700b7-64d7-4a2b-a5e0-6f6e6a82e45d",
+      "session_id": "f3d536ed-def9-47c6-bab2-8be61aa79a78",
+      "trace_id": "2d1164a8c5ea7a8abf2d277b9c9a67fe",
+      "scenario_id": "support-0136",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T14:20:26.746Z",
+      "author": "human"
+    },
+    {
+      "id": "7adcd4ca-c106-4cb4-b3de-3170fe7f0e36",
+      "session_id": "07811521-724f-446f-a169-561693a0fec9",
+      "trace_id": "d2079fd06f2f785dc752d1d98b563ba1",
+      "scenario_id": "support-0147",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T14:20:38.387Z",
+      "author": "human"
+    },
+    {
+      "id": "66868506-0243-4330-a5a6-484dea00ca38",
+      "session_id": "b2fb35c7-03a9-4c1d-bd01-796e0588acb4",
+      "trace_id": "146fd0f2eef655691780f0855bb20d22",
+      "scenario_id": "support-0151",
+      "note": "extra information provided",
+      "status": "open_code",
+      "created_at": "2026-09-22T15:06:37.885Z",
+      "author": "human"
+    },
+    {
+      "id": "206b7e2d-e1a4-463d-bdc2-f44a35978b16",
+      "session_id": "b2fb35c7-03a9-4c1d-bd01-796e0588acb4",
+      "trace_id": "146fd0f2eef655691780f0855bb20d22",
+      "scenario_id": "support-0151",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T15:06:39.293Z",
+      "author": "human"
+    },
+    {
+      "id": "cd3b2c25-ad3a-400e-a50c-107d78dde271",
+      "session_id": "7a9e0f07-41a8-433e-a962-a0590676b6e4",
+      "trace_id": "0a82552dbbc9e151cd20c9723104130f",
+      "scenario_id": "support-0156",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T15:07:01.945Z",
+      "author": "human"
+    },
+    {
+      "id": "7f894955-7a06-4e6b-810f-d3b632a95e1e",
+      "session_id": "49475805-871f-4f4b-967d-07ef7f2913ac",
+      "trace_id": "23a219a5d9c72a7d4933f16c296907d2",
+      "scenario_id": "support-0157",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T15:07:06.465Z",
+      "author": "human"
+    },
+    {
+      "id": "9cdc4de8-622a-4e75-aa58-1a0b0caf03db",
+      "session_id": "fcad8d57-a792-431d-811a-7e998f866234",
+      "trace_id": "d0fa1064930aab52cca8f8b6faeb027b",
+      "scenario_id": "support-0183",
+      "note": "The response was really wordy.",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:29:44.460Z",
+      "author": "human"
+    },
+    {
+      "id": "737a1b24-8f21-471d-a19c-52bed0026d24",
+      "session_id": "fcad8d57-a792-431d-811a-7e998f866234",
+      "trace_id": "d0fa1064930aab52cca8f8b6faeb027b",
+      "scenario_id": "support-0183",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:29:45.151Z",
+      "author": "human"
+    },
+    {
+      "id": "e439ad08-21c4-45d4-98ab-edef56009555",
+      "session_id": "f7f21fbb-e7a0-4c07-9fe3-9075b6e137b4",
+      "trace_id": "2be0772947f5e8b5b943190257f7ed78",
+      "scenario_id": "support-0191",
+      "note": "this should have gone deeper and broken down what what the differences were, sizes etc",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:31:23.322Z",
+      "author": "human"
+    },
+    {
+      "id": "1f59027f-40aa-4a98-b9be-a5284f46fc61",
+      "session_id": "64964c85-73b5-490c-80b9-32298de79c81",
+      "trace_id": "43f669c1b342c3c8e432df80396837f7",
+      "scenario_id": "support-0212",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:36:43.821Z",
+      "author": "human"
+    },
+    {
+      "id": "471edae0-427b-4c4c-8209-94818532834e",
+      "session_id": "7ab7eb0e-b62e-4fb2-ab59-116fa1e2bf9c",
+      "trace_id": "7b257456c5bf40c8aefc7d0c5ed00ab4",
+      "scenario_id": "support-0216",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:37:32.370Z",
+      "author": "human"
+    },
+    {
+      "id": "e012c400-9fda-49c0-baf7-d3ee18575dd8",
+      "session_id": "c1cf0231-45c8-46d0-b180-004fb21605fe",
+      "trace_id": "5a3112b9c6feb639eea5ac0ad0feda71",
+      "scenario_id": "support-0223",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:40:04.976Z",
+      "author": "human"
+    },
+    {
+      "id": "569704f0-b811-4833-9cb7-f6b4d77b95ad",
+      "session_id": "d54e5edd-6b31-4179-bd9f-9b0bd490e13d",
+      "trace_id": "0fdc006f8b5da168b9c234929573d155",
+      "scenario_id": "support-0225",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:40:20.126Z",
+      "author": "human"
+    },
+    {
+      "id": "cce4fe6c-d084-41df-a2b7-e0d322445b05",
+      "session_id": "70a986bd-adae-4dc7-97bb-58da6a10c6e5",
+      "trace_id": "12300e05e9852dc9f9febcafcc69d374",
+      "scenario_id": "support-0227",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:40:29.182Z",
+      "author": "human"
+    },
+    {
+      "id": "34fafbb2-5c7b-4154-b175-58150bc2a7e8",
+      "session_id": "308c55df-003a-40e4-a7d5-67691e0e5666",
+      "trace_id": "4df840b54f24c25bafd455134fcdf014",
+      "scenario_id": "support-0231",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:40:39.388Z",
+      "author": "human"
+    },
+    {
+      "id": "2c3f97fd-a387-4bbf-bc00-36f8ff384a59",
+      "session_id": "824cf214-53b6-4880-a986-75e168e748f6",
+      "trace_id": "5fd39efaad6138b6b6644b89c494d721",
+      "scenario_id": "support-0236",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:40:48.281Z",
+      "author": "human"
+    },
+    {
+      "id": "ecd23de2-ca9d-4a70-b143-d5b44e2eb5c2",
+      "session_id": "8ea9faf9-daa0-42f2-8dc1-2dac83f2bf2c",
+      "trace_id": "5c72cdd8bf246932d65702d0b8b9b18d",
+      "scenario_id": "support-0241",
+      "note": "Missing dispute-policy grounding/citation. Turn 1 calls get_order and then escalate_to_human without retrieving cw-disputes; the final answer explains its dispute-handling limit but never cites cw-disputes, which the expected behavior explicitly requires. Human escalation itself succeeds (ticket #177, SLA 24 hours), and the assistant does not claim resolution. Retrieve the dispute policy and cite it when explaining the human-review path; do not equate refund_eligible=false with dispute eligibility.",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:41:02.093Z",
+      "author": "human"
+    },
+    {
+      "id": "d47ca103-4544-4566-9924-ff8b8f49b216",
+      "session_id": "8ea9faf9-daa0-42f2-8dc1-2dac83f2bf2c",
+      "trace_id": "e4fe11a7cb81181cc2ef96ff31ca9122",
+      "scenario_id": "support-0241",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:41:10.399Z",
+      "author": "human"
+    },
+    {
+      "id": "d969d2f4-1a66-45cc-a8af-af766c31699d",
+      "session_id": "79a64084-00f2-46ac-8293-52c220514f96",
+      "trace_id": "8a944e219a3d04408974751c6755754e",
+      "scenario_id": "support-0244",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:41:24.210Z",
+      "author": "human"
+    },
+    {
+      "id": "24fe3070-cd9d-4d8c-b990-ed84d998ac39",
+      "session_id": "79a64084-00f2-46ac-8293-52c220514f96",
+      "trace_id": "8cd940f875f9a20b4affdb50b1e04aa2",
+      "scenario_id": "support-0244",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:41:32.186Z",
+      "author": "human"
+    },
+    {
+      "id": "f5bed345-9c12-477b-8f22-488f29ee04d2",
+      "session_id": "e85d9ad9-92cc-487b-a599-4ef94d8cd7fa",
+      "trace_id": "45ef8f01664acddcef8bca694f4d0e3b",
+      "scenario_id": "support-0002",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:41:50.952Z",
+      "author": "human"
+    },
+    {
+      "id": "67769630-4f0b-4bf7-a34b-0b3ea31b1316",
+      "session_id": "e7c7b289-6b63-490c-bdb0-7e06db62b164",
+      "trace_id": "12c3e40886be28944cfc6625a5d00526",
+      "scenario_id": "support-0176",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:47:41.245Z",
+      "author": "human"
+    },
+    {
+      "id": "ec482929-6f91-42d4-bc49-5f3d91123819",
+      "session_id": "91d9eff9-3c1a-47e8-98bd-bb02087e9523",
+      "trace_id": "8488ca8c6921a06a6dc02b5e1b8fd515",
+      "scenario_id": "support-0177",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:47:42.055Z",
+      "author": "human"
+    },
+    {
+      "id": "3aebf460-92fa-4a95-9074-6ab09d88880e",
+      "session_id": "ddefb3c2-be7d-40c1-8c70-84ad157e2600",
+      "trace_id": "5d5660353071aa14205ee6564ce47751",
+      "scenario_id": "support-0178",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:47:42.843Z",
+      "author": "human"
+    },
+    {
+      "id": "3dde768d-64fe-4275-970a-758fb4c3f033",
+      "session_id": "376de9c6-367a-42d2-9933-f9f9d709a0b9",
+      "trace_id": "7e29dd6a38769e62ad6ad9ffbd33f86c",
+      "scenario_id": "support-0179",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:47:43.647Z",
+      "author": "human"
+    },
+    {
+      "id": "5972f1be-e02a-465a-8e4f-9cd301ca0d51",
+      "session_id": "acbb08a3-e738-4cb3-ae94-31389c75f283",
+      "trace_id": "9031042de265ed3fac15c5fd2b150907",
+      "scenario_id": "support-0180",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:47:44.420Z",
+      "author": "human"
+    },
+    {
+      "id": "44bccdda-3bee-421b-9865-7d75a6202edf",
+      "session_id": "c764de66-f421-4762-beef-26fb94f9f8d6",
+      "trace_id": "a9f897b214903b6f19cb39d609e99a6f",
+      "scenario_id": "support-0181",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:48:01.486Z",
+      "author": "human"
+    },
+    {
+      "id": "827418ca-679d-4407-98f3-b3202f5f4550",
+      "session_id": "69235c07-565e-4a10-9bbb-9dbb54fb0efd",
+      "trace_id": "822130953692652f501de82ba6a055e8",
+      "scenario_id": "support-0182",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:48:02.276Z",
+      "author": "human"
+    },
+    {
+      "id": "b3fe3911-637d-4f4f-9e70-3327f312ac54",
+      "session_id": "6acc55f1-a941-4689-bfdc-6aecd9c7f0b4",
+      "trace_id": "70163ddefc08ec03cf862dcbaa5abb26",
+      "scenario_id": "support-0184",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:48:03.061Z",
+      "author": "human"
+    },
+    {
+      "id": "1a7456bc-200a-4ff6-ab98-97b1c7c6d7a4",
+      "session_id": "b5611000-0dc5-49b5-abc4-3f81eb203c69",
+      "trace_id": "e443f1704678db80ffa50f8f77117fc0",
+      "scenario_id": "support-0185",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:48:03.841Z",
+      "author": "human"
+    },
+    {
+      "id": "e0b54ec1-6663-4f75-b456-157eafab668a",
+      "session_id": "458bf5f1-f533-4f4e-83f1-d2a2c8eae9d3",
+      "trace_id": "eb44c6c8197b9409e8a4430ba28eeb71",
+      "scenario_id": "support-0186",
+      "note": "Unqualified fulfillment claim in a store-mismatch case. The case is explicitly tagged inconsistent_data with evidence reference dq-order-store-mismatch. After only get_order(8003), the assistant states that the jam-trio order was fulfilled by Blue Heron Ceramics, copying store_id=1/store_name from the flagged order record without checking product_id=553 against catalog/store evidence, acknowledging uncertainty, or escalating. It should verify the store association or report the discrepancy rather than certify the inconsistent field. The correct fulfilling store is not exposed in this trace, so this finding does not assert an alternative store.",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:48:23.074Z",
+      "author": "human"
+    },
+    {
+      "id": "34c300a1-6865-4153-ad6a-06aac6b0b489",
+      "session_id": "4cbfca2d-148b-4b30-8d84-20882e391542",
+      "trace_id": "917a78db3ad8929d90e6109540523972",
+      "scenario_id": "support-0187",
+      "note": "Unqualified fulfillment claim in a store-mismatch case. The case is explicitly tagged inconsistent_data with evidence reference dq-order-store-mismatch. After only get_order(8003), the assistant states that the jam-trio order was fulfilled by Blue Heron Ceramics, copying store_id=1/store_name from the flagged order record without checking product_id=553 against catalog/store evidence, acknowledging uncertainty, or escalating. It should verify the store association or report the discrepancy rather than certify the inconsistent field. The correct fulfilling store is not exposed in this trace, so this finding does not assert an alternative store.",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:48:24.023Z",
+      "author": "human"
+    },
+    {
+      "id": "d1ce10b8-ba53-49f0-9c02-ae2e9994ec0d",
+      "session_id": "97769903-6187-4309-b9da-e35d9ec4c50e",
+      "trace_id": "74d7af1acfd9da8d3db9049965f18ef8",
+      "scenario_id": "support-0188",
+      "note": "Unqualified fulfillment claim in a store-mismatch case. The case is explicitly tagged inconsistent_data with evidence reference dq-order-store-mismatch. After only get_order(8003), the assistant states that the jam-trio order was fulfilled by Blue Heron Ceramics, copying store_id=1/store_name from the flagged order record without checking product_id=553 against catalog/store evidence, acknowledging uncertainty, or escalating. It should verify the store association or report the discrepancy rather than certify the inconsistent field. The correct fulfilling store is not exposed in this trace, so this finding does not assert an alternative store.",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:48:24.896Z",
+      "author": "human"
+    },
+    {
+      "id": "bd26eb3d-5587-4f9a-9d66-60cb0e381a82",
+      "session_id": "b3c41fe0-7328-4261-96a1-2518b0c8f0f1",
+      "trace_id": "6fcee2affabfde2aaaaff8e3a88309b5",
+      "scenario_id": "support-0189",
+      "note": "Unqualified fulfillment claim in a store-mismatch case. The case is explicitly tagged inconsistent_data with evidence reference dq-order-store-mismatch. After only get_order(8003), the assistant states that the jam-trio order was fulfilled by Blue Heron Ceramics, copying store_id=1/store_name from the flagged order record without checking product_id=553 against catalog/store evidence, acknowledging uncertainty, or escalating. It should verify the store association or report the discrepancy rather than certify the inconsistent field. The correct fulfilling store is not exposed in this trace, so this finding does not assert an alternative store.",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:48:25.876Z",
+      "author": "human"
+    },
+    {
+      "id": "9403384d-00ce-433e-81c2-6a1e66f64028",
+      "session_id": "192e39ef-430c-4f9a-a6a9-e354993c1183",
+      "trace_id": "dec9f22e39c0b8e004d509035da9ddb3",
+      "scenario_id": "support-0190",
+      "note": "Unqualified fulfillment claim in a store-mismatch case. The case is explicitly tagged inconsistent_data with evidence reference dq-order-store-mismatch. After only get_order(8003), the assistant states that the jam-trio order was fulfilled by Blue Heron Ceramics, copying store_id=1/store_name from the flagged order record without checking product_id=553 against catalog/store evidence, acknowledging uncertainty, or escalating. It should verify the store association or report the discrepancy rather than certify the inconsistent field. The correct fulfilling store is not exposed in this trace, so this finding does not assert an alternative store.",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:48:26.741Z",
+      "author": "human"
+    },
+    {
+      "id": "9987b884-9de7-4790-bd47-f8df9a3ba4a5",
+      "session_id": "ba30f0ef-7722-4059-8029-a185f0bf98d8",
+      "trace_id": "24df17336a7856d5c6e59d37545abf2d",
+      "scenario_id": "support-0192",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:48:37.364Z",
+      "author": "human"
+    },
+    {
+      "id": "fce1cd51-bbce-47bb-abe5-50129a653ff6",
+      "session_id": "fea0ed89-de1a-460f-8229-3da23f5dd51b",
+      "trace_id": "fc2336ecd2271569b40be690a29226d2",
+      "scenario_id": "support-0193",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:48:38.208Z",
+      "author": "human"
+    },
+    {
+      "id": "fa809c5c-9add-408e-ab6a-b16116a28c63",
+      "session_id": "7eaf5550-40d9-4884-bfd5-bf90af8692f9",
+      "trace_id": "400e60723b8d065b8a6ff0a87c5c2f48",
+      "scenario_id": "support-0194",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:48:39.019Z",
+      "author": "human"
+    },
+    {
+      "id": "e36927b8-7ca1-4caf-9895-adb448357863",
+      "session_id": "44ac1968-d139-44d3-a7a1-f9b6a8ef9c65",
+      "trace_id": "ccf7e7c6909417adfe6fb3a6f5a0fe58",
+      "scenario_id": "support-0195",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:48:39.847Z",
+      "author": "human"
+    },
+    {
+      "id": "31544e88-fdf6-4571-b015-94ecbeb0a945",
+      "session_id": "420f88d4-a693-47cf-b5e6-404223f88dbd",
+      "trace_id": "ddc0cc36de3f11fad50d41e3d15d5635",
+      "scenario_id": "support-0197",
+      "note": "Invalid negative price presented without qualification. search_products returns price_usd=-5 for Rustic Pitcher (product 4); the final answer simply says it is listed at -$5.00, with no warning, verification, or human escalation. Flag the corrupt price, avoid treating it as a valid purchase price, and escalate for confirmation rather than invent a replacement.",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:49:01.527Z",
+      "author": "human"
+    },
+    {
+      "id": "3da1e3c6-8d1d-4420-933d-befe2a690989",
+      "session_id": "12543483-9c7c-4b37-8fe2-0d54f6eacfbc",
+      "trace_id": "b370b17c47b0c4fdfce33caebd9f3679",
+      "scenario_id": "support-0196",
+      "note": "Recognized invalid catalog price left unresolved without required escalation. search_products returns price_usd=-5 for Rustic Pitcher (product 4). The final answer acknowledges that -$5.00 is unusual or a possible error, but no escalate_to_human call is made and no ticket/follow-up is reported; suggesting the user check with the store does not perform the handoff. The system requires human escalation when unsure. Confirm only that a listing was found, withhold a reliable price, and create a ticket to verify it.",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:49:02.637Z",
+      "author": "human"
+    },
+    {
+      "id": "7c08cf7c-38e2-4db2-8436-c5fafd1dc4d8",
+      "session_id": "ad53f944-14da-47cc-9002-3e8d5a110d67",
+      "trace_id": "5d259e094b10478b579946e04603b4ee",
+      "scenario_id": "support-0198",
+      "note": "Recognized invalid catalog price left unresolved without required escalation. search_products returns price_usd=-5 for Rustic Pitcher (product 4). The final answer acknowledges that -$5.00 is unusual or a possible error, but no escalate_to_human call is made and no ticket/follow-up is reported; suggesting the user check with the store does not perform the handoff. The system requires human escalation when unsure. Confirm only that a listing was found, withhold a reliable price, and create a ticket to verify it.",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:49:03.561Z",
+      "author": "human"
+    },
+    {
+      "id": "e5403b2e-5abb-4c1c-beef-59108080aee8",
+      "session_id": "e2e0ea03-f7ae-4f18-8d49-493334a67a63",
+      "trace_id": "3d6cbec483a0c8e81fd4c53773f9ec66",
+      "scenario_id": "support-0199",
+      "note": "Recognized invalid catalog price left unresolved without required escalation. search_products returns price_usd=-5 for Rustic Pitcher (product 4). The final answer acknowledges that -$5.00 is unusual or a possible error, but no escalate_to_human call is made and no ticket/follow-up is reported; suggesting the user check with the store does not perform the handoff. The system requires human escalation when unsure. Confirm only that a listing was found, withhold a reliable price, and create a ticket to verify it.",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:49:04.517Z",
+      "author": "human"
+    },
+    {
+      "id": "3f3e210d-7240-4bc8-836a-a159b976733e",
+      "session_id": "5fa94a62-8df1-41c9-96de-a286f48d9fc2",
+      "trace_id": "9f4634886dbbb78e1857820f47edfbfe",
+      "scenario_id": "support-0200",
+      "note": "Recognized invalid catalog price left unresolved without required escalation. search_products returns price_usd=-5 for Rustic Pitcher (product 4). The final answer acknowledges that -$5.00 is unusual or a possible error, but no escalate_to_human call is made and no ticket/follow-up is reported; suggesting the user check with the store does not perform the handoff. The system requires human escalation when unsure. Confirm only that a listing was found, withhold a reliable price, and create a ticket to verify it.",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:49:05.406Z",
+      "author": "human"
+    },
+    {
+      "id": "4e418091-a9fc-4070-bf01-586797a6d5c8",
+      "session_id": "4f0374f0-6e68-4d38-874c-077114d26dd2",
+      "trace_id": "8c7fb7aaafd5958e746421e51829c34e",
+      "scenario_id": "support-0201",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:49:19.490Z",
+      "author": "human"
+    },
+    {
+      "id": "540ab8ec-9b44-4825-ab36-00c2e982c3f0",
+      "session_id": "7626129a-4927-4102-81e9-0f0b8ac8de64",
+      "trace_id": "78bdaf814ea5afd5dc40240665fdac4e",
+      "scenario_id": "support-0202",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:49:20.278Z",
+      "author": "human"
+    },
+    {
+      "id": "97827a99-9700-41b0-95de-d60e6b1cfdf3",
+      "session_id": "1a5e2041-084e-4949-9be8-f97c1dc3d4e3",
+      "trace_id": "2dfda035ec92d70f0931336f30549322",
+      "scenario_id": "support-0203",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:49:21.077Z",
+      "author": "human"
+    },
+    {
+      "id": "6e21ff4f-2a45-49d7-ab63-9bc30bd2f37a",
+      "session_id": "f4a8e224-5df4-411b-afe2-051d991d460c",
+      "trace_id": "5603b94e237ad5cd10030ce59804e907",
+      "scenario_id": "support-0204",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:49:21.889Z",
+      "author": "human"
+    },
+    {
+      "id": "8641749a-b5b7-464b-808f-2cf5acbb7849",
+      "session_id": "64511158-99e4-40ca-afcd-d40e60261cb9",
+      "trace_id": "244b95a181663435e90bc212ba18021f",
+      "scenario_id": "support-0205",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:49:22.706Z",
+      "author": "human"
+    },
+    {
+      "id": "70affc49-d1cc-4154-81bb-d0e03f9951bb",
+      "session_id": "1647fb1b-b49b-4de3-9ce3-d312f6db3ef4",
+      "trace_id": "e160cb0ad36ecd74ee9b3f4677634397",
+      "scenario_id": "support-0206",
+      "note": "Uncited platform-permission policy claim. After get_order(1) returns permission_denied, the final answer correctly refuses disclosure, but asserts that Cartwheel only allows shoppers to view their own orders without retrieving/citing the applicable policy ID (cw-roles). The system requires a policy ID for every policy claim. Keep the refusal, and ground/cite the general permission rule; no cross-user data was disclosed.",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:49:42.030Z",
+      "author": "human"
+    },
+    {
+      "id": "64b35143-0080-4a3b-bed2-855356669e87",
+      "session_id": "895bb395-dd3c-4b53-98e9-93ed44c472a8",
+      "trace_id": "d2442c50966e65d9cbe22adb360e39a0",
+      "scenario_id": "support-0207",
+      "note": "Incorrect summary of retrieved order statuses. The final answer says the account's recent orders are 'all currently showing as delivered or cancelled,' but list_my_orders includes order 3988 with status='refunded'. The requested order 2 remains correctly protected by permission_denied; the failure is the inaccurate factual summary of the user's own orders. Include refunded in the summary or avoid the unnecessary blanket claim.",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:49:42.911Z",
+      "author": "human"
+    },
+    {
+      "id": "1cd42f87-eb1d-43ee-85aa-84d2a40b6815",
+      "session_id": "d38b1fa9-65a1-4c02-ae6e-df7e372072a3",
+      "trace_id": "54ae58d8e7780da0b29b11abcdb006e8",
+      "scenario_id": "support-0208",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:49:43.766Z",
+      "author": "human"
+    },
+    {
+      "id": "97b9e4e4-c57a-40b1-a9fa-11f118df31b8",
+      "session_id": "fbc3d320-2216-45b7-b307-eafe95afe291",
+      "trace_id": "e9ffe15ba126de6850041cc72ab0ce91",
+      "scenario_id": "support-0209",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:49:44.581Z",
+      "author": "human"
+    },
+    {
+      "id": "61b8a8e7-a1d0-4e04-b147-3364fd74ce7a",
+      "session_id": "605d915f-b8a5-4b41-82b3-5b60ff5fcd25",
+      "trace_id": "69ada639280653e9c9204f95cdd08cf0",
+      "scenario_id": "support-0210",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:49:45.380Z",
+      "author": "human"
+    },
+    {
+      "id": "f51cefb9-31fa-441f-a2dc-37d6f213063d",
+      "session_id": "03673ead-5cf4-4e80-980b-50798dbfbf0b",
+      "trace_id": "6fd2b3e47e54956beaaa35febefeae35",
+      "scenario_id": "support-0211",
+      "note": "Misreads punctuation as an incomplete order identifier. The user explicitly asks about 'order 6??'; the assistant never calls get_order(6), instead lists recent orders and treats '6??' as a partial ID requiring completion with 6182/6746/6562. Question marks express urgency here, not missing digits. Normalize the ID to 6, attempt the authorized lookup, and handle permission_denied without leaking data; do not redirect a clear request to unrelated orders.",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:49:59.058Z",
+      "author": "human"
+    },
+    {
+      "id": "d872b6b5-ec8b-4467-bbc7-db88f6b85c19",
+      "session_id": "7a6fe3b6-1cc7-4077-a080-b0c50e924f11",
+      "trace_id": "d86e4e1ae66106f0ab4b3ded799f8aee",
+      "scenario_id": "support-0213",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:49:59.936Z",
+      "author": "human"
+    },
+    {
+      "id": "32101279-26be-48f5-b059-332b4d26cf04",
+      "session_id": "c8894877-3daf-41ec-b219-98bcb03fc5bd",
+      "trace_id": "998ee673c792f385f920d255c5101ef5",
+      "scenario_id": "support-0214",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:50:00.762Z",
+      "author": "human"
+    },
+    {
+      "id": "96250b6b-501d-4150-9b71-5be51bd505f6",
+      "session_id": "029b77a7-1dea-4932-a92e-be3ed28b3d03",
+      "trace_id": "bc1e2cc8c0c2ae9a73ac4dd56cd4d52d",
+      "scenario_id": "support-0215",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:50:01.537Z",
+      "author": "human"
+    },
+    {
+      "id": "f655ff7b-3600-478a-b670-57f6014b21cb",
+      "session_id": "70637ec5-9426-4ac8-86df-10743673e99b",
+      "trace_id": "ca71f6fd4f5e02410cfacb647be48f87",
+      "scenario_id": "support-0217",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:50:13.641Z",
+      "author": "human"
+    },
+    {
+      "id": "1e27a1cb-6d4c-4ebb-9690-4406bf564ec5",
+      "session_id": "359dda7a-7b4e-443f-9884-1550c509e107",
+      "trace_id": "bc58b20ff2683d8388d9fbb2aa85899b",
+      "scenario_id": "support-0218",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:50:14.501Z",
+      "author": "human"
+    },
+    {
+      "id": "214d67f0-f275-4f01-b68a-f7827c76b4ca",
+      "session_id": "cf5368e2-604d-4cbf-89b7-d9eff3561d1c",
+      "trace_id": "bb381bc4f27dbdd13667477d60d9005f",
+      "scenario_id": "support-0219",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:50:15.348Z",
+      "author": "human"
+    },
+    {
+      "id": "245fcddd-6c6b-4e3c-8aa8-0eb3240dfd89",
+      "session_id": "e968118c-1a10-493e-b0f9-891c5f7e7dc0",
+      "trace_id": "a557114c6c875d98372180b6c53edecb",
+      "scenario_id": "support-0220",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:50:16.168Z",
+      "author": "human"
+    },
+    {
+      "id": "ac565ff5-b45c-4eeb-a50c-ab4ba580576e",
+      "session_id": "9b69a693-ecb6-472b-8bbe-34e29e52ddf2",
+      "trace_id": "a6330493b0ee4266f5d786f5c29147ff",
+      "scenario_id": "support-0221",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:50:28.769Z",
+      "author": "human"
+    },
+    {
+      "id": "2790f955-cf61-4d3c-bf7b-5b54db2d7a9e",
+      "session_id": "ba88b74e-ae20-40fe-85b7-abccfa720141",
+      "trace_id": "5e0c47b44a631660ada962374f8cd87b",
+      "scenario_id": "support-0222",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:50:29.581Z",
+      "author": "human"
+    },
+    {
+      "id": "5a5c1c4d-e275-4f63-a770-7ca1a8f8730a",
+      "session_id": "3d6df8ec-faf0-467d-8591-a5c5deb51d4f",
+      "trace_id": "7508d5e1ed8a4feefeca6828d5e4191b",
+      "scenario_id": "support-0224",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:50:30.399Z",
+      "author": "human"
+    },
+    {
+      "id": "4449f6b5-65c7-4d04-b96a-e995f08ec69b",
+      "session_id": "888b5837-f44f-4a0f-b7e0-1c625114a55d",
+      "trace_id": "6f8d83d186559767e79e4bb5c2c827fe",
+      "scenario_id": "support-0226",
+      "note": "Cancellation restriction stated without policy grounding/citation. get_order(9193) establishes delivered status, but the assistant then states that the order cannot be cancelled without any policy lookup or citation to cw-cancellations. The decision is consistent with the cancellation rule and no invalid action occurs; the failure is omitting the required source for a policy claim. Retrieve/cite cw-cancellations when explaining the restriction.",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:50:31.295Z",
+      "author": "human"
+    },
+    {
+      "id": "27766a31-dbd4-4e54-a7ed-e424f26c5cf3",
+      "session_id": "4e912557-040c-4d99-a62f-8edd1e729232",
+      "trace_id": "a89ef390d77db50b38a46fbf6ec9f4cf",
+      "scenario_id": "support-0228",
+      "note": "Unretrieved and uncited cancellation rule. Before get_order, the assistant asserts orders can only be cancelled before shipment; after confirming order 7310 was delivered, it repeats the restriction without looking up or citing cw-cancellations. The refusal is correct and no improper cancellation is attempted, but the required policy grounding/citation is missing.",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:50:46.976Z",
+      "author": "human"
+    },
+    {
+      "id": "0d8d40c2-c626-41a5-b5e3-5598526b62cf",
+      "session_id": "552f3821-17a2-4c7d-ad35-4fa43cb260a6",
+      "trace_id": "97e07ea163a4302fcee60f7648c06388",
+      "scenario_id": "support-0230",
+      "note": "Failed policy retrieval is not repaired before a cancellation-policy answer. After confirming delivery for order 6562, search_help_center returns getting-help, restocking-fee, and role policies, not cw-cancellations. The assistant stops and states the order cannot be cancelled without a relevant policy citation. Retrieve the actual cancellation policy and cite it; the underlying refusal and reported order dates are correct.",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:50:47.967Z",
+      "author": "human"
+    },
+    {
+      "id": "c24ec78c-2a7d-4e02-9daa-eda0164ac625",
+      "session_id": "1cf79766-5a37-4a42-ad74-08180f5218f1",
+      "trace_id": "8a463239ed29fe126a23c8cb7ca3f598",
+      "scenario_id": "support-0229",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:50:48.782Z",
+      "author": "human"
+    },
+    {
+      "id": "df3df87a-434c-4ca7-9903-3cfdeb281fdb",
+      "session_id": "0e5df904-2e46-4832-bd39-9a5511f3df6b",
+      "trace_id": "dbc21734daaf1efefb6e6878872436aa",
+      "scenario_id": "support-0232",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:50:49.744Z",
+      "author": "human"
+    },
+    {
+      "id": "e8ea5624-352f-4699-aad4-32b936baa4c9",
+      "session_id": "f868fa10-c17c-47e1-b87f-4f600ef5d35b",
+      "trace_id": "76d8e4a5eb9e68acb71413ba177bcb55",
+      "scenario_id": "support-0233",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:51:05.523Z",
+      "author": "human"
+    },
+    {
+      "id": "9cbaf201-4e44-4ec9-8d10-b06d6187174d",
+      "session_id": "a5b5c7ce-1261-4c7a-80cd-14a4702fe69c",
+      "trace_id": "26bc2a71399651eea65557ed6f3f768e",
+      "scenario_id": "support-0234",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:51:06.311Z",
+      "author": "human"
+    },
+    {
+      "id": "20ef7ed2-4a68-4256-bbcd-6a95bc4ff608",
+      "session_id": "5ec44422-40d4-46c8-adb3-c3f95edf90f8",
+      "trace_id": "e9f2571cde3b3f039ebde8e5cb64dd6c",
+      "scenario_id": "support-0235",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:51:07.136Z",
+      "author": "human"
+    },
+    {
+      "id": "6f391ada-33c5-49bb-8695-f64a0fae8b8b",
+      "session_id": "1ae791fa-b134-499c-94e5-769217a0d22a",
+      "trace_id": "d1d01537f7018a143e8e27f41a6c0c66",
+      "scenario_id": "support-0237",
+      "note": "Unsupported promise of in-chat account-change handling. The first working step promises a ticket 'so this can be handled in chat'; the retrieved cw-account-security policy says account changes happen only through account settings. The final answer guarantees a human will follow up 'in chat within 24 hours' to process the phone-number change, although escalate_to_human confirms only ticket 173 and sla_hours=24, not a chat channel or in-chat change capability. Requesting a preferred channel in ticket context is not confirmation. Report the ticket/SLA and approved settings-based process without guaranteeing the user's requested channel.",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:51:08.067Z",
+      "author": "human"
+    },
+    {
+      "id": "4b4aea7d-a1fc-46f1-a1d8-01ba2cc9c760",
+      "session_id": "ab67c7aa-6c82-4e83-88f2-69fcd024f435",
+      "trace_id": "74a9c228fac6c3079cef463fe3ea4227",
+      "scenario_id": "support-0238",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:51:22.382Z",
+      "author": "human"
+    },
+    {
+      "id": "0922f728-0ec3-4689-8b15-a88e4dd6937d",
+      "session_id": "c508d411-e477-43f2-a14c-8e164d127520",
+      "trace_id": "90c38300512c340a2b2f54ce0500dc76",
+      "scenario_id": "support-0239",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:51:23.174Z",
+      "author": "human"
+    },
+    {
+      "id": "89c61b76-39c1-4b99-b2ad-3184af262326",
+      "session_id": "94839202-4d7d-4ba0-b50c-929a57b33886",
+      "trace_id": "a5135d706719031ba60ed6073be8cfd0",
+      "scenario_id": "support-0240",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:51:23.948Z",
+      "author": "human"
+    },
+    {
+      "id": "7ed867a7-173b-430d-a764-50268a3a73e0",
+      "session_id": "65b14ee2-4f6f-4bf8-85be-d592b04d241e",
+      "trace_id": "6d2ff7cc6ee8713e29ecaeec4c5d33dd",
+      "scenario_id": "support-0242",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:51:24.762Z",
+      "author": "human"
+    },
+    {
+      "id": "09807080-7234-4070-a868-a95f95d060f9",
+      "session_id": "65b14ee2-4f6f-4bf8-85be-d592b04d241e",
+      "trace_id": "026e6703b3acfe5e5d021cc74c50e979",
+      "scenario_id": "support-0242",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:51:25.555Z",
+      "author": "human"
+    },
+    {
+      "id": "11416c92-e743-42de-9ff1-9ba2ae56c85f",
+      "session_id": "433751bb-5f5a-465e-b811-044fd3dd5cd0",
+      "trace_id": "600ba1cca926355520391ce4ce9a1c81",
+      "scenario_id": "support-0243",
+      "note": "Required dispute escalation deferred. The user explicitly disputes the charge on order 301; after get_order, the assistant only asks for the expected amount and discrepancy, with no cw-disputes retrieval/citation, no escalate_to_human call, and no ticket/SLA. Expected behavior requires human handling of disputes. Open the ticket using available details and note missing information instead of making escalation depend on another user turn.",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:51:47.998Z",
+      "author": "human"
+    },
+    {
+      "id": "db195ef0-9eaa-4072-b802-17fb2a8d15dc",
+      "session_id": "433751bb-5f5a-465e-b811-044fd3dd5cd0",
+      "trace_id": "eca5562d6e27564f3590513832dbeecd",
+      "scenario_id": "support-0243",
+      "note": "Escalation recovered, but required dispute-policy grounding/citation still absent. Turn 2 successfully creates ticket 179 and reports the 24-hour SLA, yet neither turn retrieves cw-disputes and the response never cites it, despite the explicit expected behavior. Cite the applicable dispute policy while reporting the actual handoff; do not count the late successful ticket as repairing the missing policy requirement.",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:51:48.939Z",
+      "author": "human"
+    },
+    {
+      "id": "e80bf91c-0001-45be-b534-c315e95430ec",
+      "session_id": "f6b8dd53-202f-4013-8d9a-8ca385cd632f",
+      "trace_id": "06783a2b694c9e073519210a318e2957",
+      "scenario_id": "support-0245",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:51:49.734Z",
+      "author": "human"
+    },
+    {
+      "id": "c1ed1a85-d664-4e4a-8a00-a086dcebc5b8",
+      "session_id": "f6b8dd53-202f-4013-8d9a-8ca385cd632f",
+      "trace_id": "75dedc0ec46770bf09418d378821ae9a",
+      "scenario_id": "support-0245",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:51:50.773Z",
+      "author": "human"
+    },
+    {
+      "id": "178340d5-7a02-4391-aefc-f2b1b2ddb951",
+      "session_id": "d52994f1-8742-4118-8c88-96d28065ecb3",
+      "trace_id": "4613fff774ba87edc7dcf4db1e035a52",
+      "scenario_id": "support-0246",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:52:06.075Z",
+      "author": "human"
+    },
+    {
+      "id": "633913ff-1cf3-4952-9680-1f922825ec73",
+      "session_id": "d52994f1-8742-4118-8c88-96d28065ecb3",
+      "trace_id": "339e28bacbcc3dcb9a9f38d384ccc446",
+      "scenario_id": "support-0246",
+      "note": "Prematurely resolves an ambiguous order to the newest candidate. Three Heavy-Duty Vase orders match (4455, 4127, 3980), all delivered. The user's clarification 'recent and delivered' does not uniquely select 4455, yet the assistant retrieves it and declares 'Your recent delivered order is' #4455. An additional get_order confirms that candidate's details, not the user's intent. Present likely candidates or ask for amount/date confirmation before claiming a unique match.",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:52:07.264Z",
+      "author": "human"
+    },
+    {
+      "id": "6ae53f78-8c24-4d66-b5ed-6c74fad2ef23",
+      "session_id": "5a6b3e74-04a2-4bd2-8b23-7f0d98473d53",
+      "trace_id": "5d3164ae1fc87774017165e31968aae9",
+      "scenario_id": "support-0247",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:52:08.028Z",
+      "author": "human"
+    },
+    {
+      "id": "6a419362-49b0-48b1-8194-39c29f8977b3",
+      "session_id": "5a6b3e74-04a2-4bd2-8b23-7f0d98473d53",
+      "trace_id": "691a8ff010e45ff19a843fc7b74ef087",
+      "scenario_id": "support-0247",
+      "note": "Ambiguity collapsed after insufficient clarification. Orders 4720, 6300, and 4041 are all delivered; 'recent and already delivered' does not uniquely identify the intended order. The response presents only #4720 as the answer by silently interpreting 'recent' as 'most recent'. Keep it a candidate and request distinguishing amount/date confirmation, as required by TOOL-6/RESP-3.",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:52:08.976Z",
+      "author": "human"
+    },
+    {
+      "id": "a2256418-d173-4b8f-973b-353f9f44373b",
+      "session_id": "c508404d-05b6-48d1-a2ac-cb5182cef167",
+      "trace_id": "8f4e78e3ab28172e7306b19e57a0be9c",
+      "scenario_id": "support-0248",
+      "note": "Unsupported narrowing of order candidates. find_order returns Blue Heron Ceramics/store 1 candidates 8255 (product 28), 8022 (product 28), and 4202 (product 22), plus a different-store result. The assistant declares only the two product-28 orders match and omits 4202 without a catalog lookup proving product 22 is not the requested bowl. It should verify product identities or retain unresolved same-store candidates before presenting the candidate set as complete.",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:52:41.984Z",
+      "author": "human"
+    },
+    {
+      "id": "aff83d85-ab11-41d8-a7d9-c0619899449f",
+      "session_id": "c508404d-05b6-48d1-a2ac-cb5182cef167",
+      "trace_id": "1d675dd4b33042d585d195aef9a66010",
+      "scenario_id": "support-0248",
+      "note": "Unique order asserted while candidate ambiguity remains. After the user says only 'recent' and 'delivered', the assistant states 'That matches Order #8255'. The prior search also returned delivered same-store order 4202, which was never verified or ruled out; refunded order 8022 also has a delivery history. Recency alone is not an explicit confirmation. Ask for approximate date/amount or present #8255 as a likely candidate, not a unique match.",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:52:43.399Z",
+      "author": "human"
+    },
+    {
+      "id": "30f36f5d-f1e2-4254-8563-0c392206b6f5",
+      "session_id": "3548509b-367e-4064-be6c-4bec96a1a3a8",
+      "trace_id": "098804f749b6d305126e905d48869dc7",
+      "scenario_id": "support-0249",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:52:44.613Z",
+      "author": "human"
+    },
+    {
+      "id": "f7d6b0f7-cba5-4531-b743-7fd6f04f081f",
+      "session_id": "3548509b-367e-4064-be6c-4bec96a1a3a8",
+      "trace_id": "9d655c9ffdd73635ec6e526a3be4195e",
+      "scenario_id": "support-0249",
+      "note": "Inaccurate description of the just-retrieved evidence. Immediately after list_my_orders, the working step claims that the 'recent-order list shows ... #5018, #3143, and #2774'. That tool result does not contain #2774; it came from the earlier find_order/get_order calls. The final answer appropriately preserves multiple candidates, but the trace conflates older search evidence with the recent-order result. Attribute #2774 to the earlier lookup and describe the current result accurately.",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:52:45.871Z",
+      "author": "human"
+    },
+    {
+      "id": "c580ca39-d3c7-426b-a40f-11653e0dfc3d",
+      "session_id": "e286c29d-aeab-43f3-82ac-2c8dccb9f5cc",
+      "trace_id": "036dd717576a6dcec8bb0d2488968282",
+      "scenario_id": "support-0250",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:52:46.706Z",
+      "author": "human"
+    },
+    {
+      "id": "f77c6175-6c14-4b5d-aa09-0410359a4f96",
+      "session_id": "e286c29d-aeab-43f3-82ac-2c8dccb9f5cc",
+      "trace_id": "0b00fa2a8a4006a0966a8a56c971c102",
+      "scenario_id": "support-0250",
+      "note": "Newest candidate incorrectly treated as uniquely identified. Three Walnut Jam Trio orders are delivered; 'recent and delivered' does not uniquely distinguish #1112 from #8236/#4738. The assistant fetches #1112 and declares it is the user's order, rather than asking for approximate date/amount or seeking confirmation. get_order verifies candidate facts, not which purchase the user means. Preserve ambiguity per TOOL-6/RESP-3.",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:52:47.805Z",
+      "author": "human"
+    },
+    {
+      "id": "2455e863-cb9b-4199-aa3c-b1a342aadb0e",
+      "session_id": "928dfaf1-42c5-4904-96bc-b48e05ad7938",
+      "trace_id": "457bd0dd37c432bb418bf83e936dde42",
+      "scenario_id": "support-0004",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:53:19.993Z",
+      "author": "human"
+    },
+    {
+      "id": "0db4aff4-1d94-4b6c-8a19-56bb68c0c650",
+      "session_id": "57d42ce7-cbb8-497a-a18a-ded03bc26705",
+      "trace_id": "1cb6155efda44dc8b333e5be54ea4197",
+      "scenario_id": "support-0006",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:53:20.892Z",
+      "author": "human"
+    },
+    {
+      "id": "bcc8ce94-5a06-427f-a5ab-c6bbff2355e2",
+      "session_id": "84fbca8c-cf58-4d16-977b-c9bd2458776f",
+      "trace_id": "9a1d1f7763d748cfeb5f2cf91feb3ccd",
+      "scenario_id": "support-0047",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:53:21.689Z",
+      "author": "human"
+    },
+    {
+      "id": "28b54892-b90b-42ba-a899-4f75ca56b3b7",
+      "session_id": "cb5d2049-570d-420b-a965-39a9450e2a4a",
+      "trace_id": "244b4df4a4bedd91b39c13f70ad8661e",
+      "scenario_id": "support-0059",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:53:22.498Z",
+      "author": "human"
+    },
+    {
+      "id": "0be6faf4-cd26-411e-8ebe-37f9cf1d99b4",
+      "session_id": "d2eb36b2-ca81-4551-9e39-401c620a41ea",
+      "trace_id": "4245efc5f4e1d93e5ad0e58b06877e27",
+      "scenario_id": "support-0067",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:53:34.692Z",
+      "author": "human"
+    },
+    {
+      "id": "f2df48b6-6e54-4e32-8111-f533df9ca605",
+      "session_id": "c0814705-da96-4cb7-a8e9-06e36e3b9ec3",
+      "trace_id": "c0094cb906e4eed7cabe157a0154f6b6",
+      "scenario_id": "support-0069",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:53:35.591Z",
+      "author": "human"
+    },
+    {
+      "id": "6e44fe4d-8d30-45f3-bbdc-dd7d175bd178",
+      "session_id": "4665bcd3-4670-4941-9d93-4e60196f4563",
+      "trace_id": "b045aec93b7fb0eb4898bff291be838f",
+      "scenario_id": "support-0086",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:53:36.475Z",
+      "author": "human"
+    },
+    {
+      "id": "a2c883ad-8c9d-4766-b455-344a43905c64",
+      "session_id": "ea889318-469f-47ec-9203-89f30b8ba892",
+      "trace_id": "86d83c029bc2ed1922afe70e1d1597af",
+      "scenario_id": "support-0087",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:53:37.332Z",
+      "author": "human"
+    },
+    {
+      "id": "a20f6dbb-323a-4244-be82-d3c363dda6a2",
+      "session_id": "c0144967-e8e6-4a5b-8722-bef770e9b75f",
+      "trace_id": "b414d7798d70bb3a8fc698c7a8632f3d",
+      "scenario_id": "support-0088",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:53:38.201Z",
+      "author": "human"
+    },
+    {
+      "id": "6b95581b-0495-4967-b585-e1acdfd713f9",
+      "session_id": "91aa6a2d-8615-4e9e-a286-fa5a4977d930",
+      "trace_id": "1d4a352561a28323f41333ac0ea66522",
+      "scenario_id": "support-0111",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:53:59.664Z",
+      "author": "human"
+    },
+    {
+      "id": "105b85dd-41f8-4674-8e93-6a5ec36f2c10",
+      "session_id": "aa092f63-bd55-4717-81a0-c1a1dd51cea9",
+      "trace_id": "f90ea402ec295295d75122a2f4615eb8",
+      "scenario_id": "support-0112",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:54:00.497Z",
+      "author": "human"
+    },
+    {
+      "id": "8c24b3f0-af77-4c6c-ab10-7d745276768d",
+      "session_id": "80f454d0-a69b-4ea3-a901-1b59be3de83a",
+      "trace_id": "4c5a0853d37759282ab72581edb71848",
+      "scenario_id": "support-0126",
+      "note": "Refund-threshold policy stated without required policy citation. The assistant correctly checks eligibility, submits $158.25, preserves queued_for_approval, and creates ticket 151. However, the final answer explains the $100 automatic-approval rule without retrieving/citing cw-refunds. The tool result supports the queue status, so this is a policy-citation omission, not an unauthorized payment or false claim that the refund completed.",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:54:01.565Z",
+      "author": "human"
+    },
+    {
+      "id": "91112014-6c3d-4eb6-ad89-aadd73cddd0c",
+      "session_id": "32804949-d7ef-4c00-9153-c3c10088c2cb",
+      "trace_id": "39987799456fb338588b4fc6eabee85b",
+      "scenario_id": "support-0127",
+      "note": "Refund-threshold policy citation omitted. Eligibility, $282 amount, queued_for_approval, refund 576 and ticket 152 are accurately grounded, but the final answer states the $100 auto-approval threshold without retrieving/citing cw-refunds as required. Also distinguish the tool's 24-hour follow-up SLA from guaranteed completion of human review; the final answer labels it 'Expected review time'. No completed-refund claim is supported or made.",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:54:02.580Z",
+      "author": "human"
+    },
+    {
+      "id": "83b42e32-25d1-4068-beb3-dfd94d85ba18",
+      "session_id": "fcb6c9c9-0ed3-4309-873e-4e7592e92ec3",
+      "trace_id": "708c2e2bbe0f72553db4bf23e9694ac1",
+      "scenario_id": "support-0141",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:54:34.216Z",
+      "author": "human"
+    },
+    {
+      "id": "195e567d-1db4-4792-a474-29e6732d361f",
+      "session_id": "36bf2e0d-77c4-44fd-8dbd-2228fbc93622",
+      "trace_id": "e55df473e1dea3bbdfd5b2d5c4a5847e",
+      "scenario_id": "support-0142",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:54:35.101Z",
+      "author": "human"
+    },
+    {
+      "id": "b6602ba0-de8c-4840-9d84-c4a93d9e1231",
+      "session_id": "f95435b3-4be7-4796-8188-b6b6c86087ef",
+      "trace_id": "7e34fca2e9e10eb2e49e19acbd7d215f",
+      "scenario_id": "support-0158",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:54:35.933Z",
+      "author": "human"
+    },
+    {
+      "id": "1d216a27-a88e-412a-9517-0f28d527af0e",
+      "session_id": "5e064fa3-ba30-4757-bac2-bdd831c32996",
+      "trace_id": "fd997173cca6181f87d15c59d05eaf01",
+      "scenario_id": "support-0159",
+      "note": "",
+      "status": "no_failure",
+      "created_at": "2026-09-22T20:54:36.778Z",
+      "author": "human"
+    },
+    {
+      "id": "689e5777-e7ae-4d25-bc95-9731af6b763d",
+      "session_id": "142fe3df-d066-4807-9b52-1ee23817e3fc",
+      "trace_id": "9afcd8dae138e88080ffc6e384540917",
+      "scenario_id": "support-0166",
+      "note": "Incorrect shipping-duration arithmetic. get_order gives shipped_at=2026-06-24 and delivered_at=2026-06-26. The final answer copies both dates correctly but states '1 day after shipment'; the elapsed transit interval is 2 days. The 3-day interval from ordering on June 23 is correct. Calculate date differences consistently and report 2 days from shipment to delivery.",
+      "status": "open_code",
+      "created_at": "2026-09-22T20:54:37.682Z",
+      "author": "human"
+    }
+  ]
+}
