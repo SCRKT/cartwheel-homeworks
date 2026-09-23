@@ -1,5 +1,5 @@
 {
-  "taxonomy_status": "approved_candidate_pending_workshop",
+  "taxonomy_status": "approved_candidate_workshop_reviewed",
   "created_at": "2026-09-22T21:55:12.601732+00:00",
   "source_annotation_count": 39,
   "modes": [
@@ -209,9 +209,9 @@
       "mode": "retrieved_evidence_misstatement",
       "name": "retrieved_evidence_misstatement",
       "status": "accepted_candidate",
-      "definition": "The response or visible working step states a factual summary that contradicts the retrieved evidence or a deterministic calculation from it.",
-      "inclusion": "Include omitted statuses in a blanket summary, attributing a record to the wrong tool result, and incorrect date arithmetic.",
-      "exclusion": "Exclude faithful summaries, harmless formatting differences, and uncertainty caused by inconsistent source records.",
+      "definition": "The response or visible working step states a factual summary that contradicts retrieved evidence or a deterministic calculation from it, or claims a broader evidence check than the recorded tool activity supports.",
+      "inclusion": "Include omitted statuses in a blanket summary, attributing a record to the wrong tool result, incorrect date arithmetic, and assurances that records do not conflict when only one record or source was checked.",
+      "exclusion": "Exclude faithful summaries, harmless formatting differences, explicitly scoped statements about one returned record, and uncertainty caused by inconsistent source records.",
       "likely_evaluator": "code_check_or_llm_judge",
       "requirement_source": {
         "status": "existing_spec",
@@ -227,15 +227,20 @@
       "positive_trace_ids": [
         "d2442c50966e65d9cbe22adb360e39a0",
         "9d655c9ffdd73635ec6e526a3be4195e",
-        "9afcd8dae138e88080ffc6e384540917"
+        "9afcd8dae138e88080ffc6e384540917",
+        "d49fd692998b130c632d64da163f45a9"
       ],
-      "positive_count": 3,
+      "positive_count": 4,
       "example_annotations": [
         "Incorrect summary of retrieved order statuses. The final answer says the account's recent orders are 'all currently showing as delivered or cancelled,' but list_my_orders includes order 3988 with status='refunded'. The requested order 2 remains correctly protected by permission_denied; the failure is the inaccurate factual summary of the user's own orders. Include refunded in the summary or avoid the unnecessary blanket claim.",
         "Inaccurate description of the just-retrieved evidence. Immediately after list_my_orders, the working step claims that the 'recent-order list shows ... #5018, #3143, and #2774'. That tool result does not contain #2774; it came from the earlier find_order/get_order calls. The final answer appropriately preserves multiple candidates, but the trace conflates older search evidence with the recent-order result. Attribute #2774 to the earlier lookup and describe the current result accurately.",
-        "Incorrect shipping-duration arithmetic. get_order gives shipped_at=2026-06-24 and delivered_at=2026-06-26. The final answer copies both dates correctly but states '1 day after shipment'; the elapsed transit interval is 2 days. The 3-day interval from ordering on June 23 is correct. Calculate date differences consistently and report 2 days from shipment to delivery."
+        "Incorrect shipping-duration arithmetic. get_order gives shipped_at=2026-06-24 and delivered_at=2026-06-26. The final answer copies both dates correctly but states '1 day after shipment'; the elapsed transit interval is 2 days. The 3-day interval from ordering on June 23 is correct. Calculate date differences consistently and report 2 days from shipment to delivery.",
+        "Unsupported assurance about retrieval scope. The answer says 'I found no conflicting records,' but the trace contains one get_order call and one record. State that the returned record is internally consistent, or check additional sources before claiming there are no conflicts."
       ],
-      "close_negative_trace_ids": []
+      "close_negative_trace_ids": [],
+      "workshop_run_ids": [
+        "f5e302e5-0aee-48d8-a6c0-ba7f24f93963"
+      ]
     }
   ],
   "ungrouped_annotations": [
@@ -285,7 +290,59 @@
       ],
       "decided_at": "2026-09-22T21:57:50.029253+00:00",
       "decision_owner": "human"
+    },
+    {
+      "candidate": "retrieved_evidence_misstatement",
+      "decision": "revised",
+      "reason": "Workshop review found an answer claiming there were no conflicting records after one get_order call. The human reviewer accepted this as overstatement of retrieved evidence scope and revised the candidate boundary.",
+      "workshop_run_ids": [
+        "f5e302e5-0aee-48d8-a6c0-ba7f24f93963"
+      ],
+      "trace_ids": [
+        "d49fd692998b130c632d64da163f45a9"
+      ],
+      "decided_at": "2026-09-23T02:22:21Z",
+      "decision_owner": "human"
     }
   ],
-  "approved_at": "2026-09-22T21:57:50.029253+00:00"
+  "approved_at": "2026-09-22T21:57:50.029253+00:00",
+  "workshop_reviewed_at": "2026-09-23T02:22:21Z",
+  "workshop_review": {
+    "report": "analysis/report/workshop_notes.md",
+    "run_count": 6,
+    "decision_owner": "human",
+    "decided_at": "2026-09-23T02:22:21Z",
+    "decisions": [
+      {
+        "suggestion": "unsupported_no_conflicts_assurance",
+        "decision": "revised_into_retrieved_evidence_misstatement",
+        "workshop_run_id": "f5e302e5-0aee-48d8-a6c0-ba7f24f93963",
+        "trace_id": "d49fd692998b130c632d64da163f45a9"
+      },
+      {
+        "suggestion": "support_order_lookup_omits_owner",
+        "decision": "accepted_isolated_observation",
+        "workshop_run_id": "f5e302e5-0aee-48d8-a6c0-ba7f24f93963",
+        "trace_id": "d49fd692998b130c632d64da163f45a9"
+      },
+      {
+        "suggestion": "order_list_overfetching",
+        "decision": "rejected_as_response_failure",
+        "workshop_run_id": "8dbf564a-6a29-46fd-bce4-31dd75e804cd",
+        "trace_id": "2e2dcab063052626d7a346456e0f0675"
+      },
+      {
+        "suggestion": "product_results_lack_store_names_or_links",
+        "decision": "retained_as_uncertain",
+        "workshop_run_id": "de7771c8-25f4-461f-a70d-00a9963c0069",
+        "trace_id": "c122055e1e542d9c890cf3d7ee7d1fa8"
+      },
+      {
+        "suggestion": "hypothetical_policy_case_missing_escalation",
+        "decision": "rejected",
+        "workshop_run_id": "04cd55eb-6a6f-4c42-83ec-44ba943028ac",
+        "trace_id": "6b57142d5b2b62b20f3d8aa0a70ab21c"
+      }
+    ]
+  }
 }
