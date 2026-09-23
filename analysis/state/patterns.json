@@ -1,12 +1,12 @@
 {
-  "taxonomy_status": "approved_candidate_workshop_reviewed",
+  "taxonomy_status": "final",
   "created_at": "2026-09-22T21:55:12.601732+00:00",
   "source_annotation_count": 39,
   "modes": [
     {
       "mode": "overinformative_response",
       "name": "overinformative_response",
-      "status": "accepted_candidate",
+      "status": "final",
       "definition": "The response includes details beyond what the user requested when a shorter answer would fully answer the question.",
       "inclusion": "Include unnecessary order fields, history, or policy exposition that materially makes a direct request harder to scan.",
       "exclusion": "Exclude details needed to disambiguate candidates, explain a decision, disclose a limitation, or safely complete an action.",
@@ -37,12 +37,18 @@
         "Same thing on this one: lots of extra information could have just been like, \"Hey, your order was delivered on X date.\"",
         "Same thing here. Should say something like, \"Order 44 was delivered on September 6, 2025.\""
       ],
-      "close_negative_trace_ids": []
+      "close_negative_trace_ids": [
+        "26ed48eaec1ff1e0cfff1d1c15fbb48a",
+        "4245efc5f4e1d93e5ad0e58b06877e27",
+        "d8a262fcf8cf8f29fe34f747958b720b"
+      ],
+      "nearest_neighbor": "retrieved_evidence_misstatement",
+      "boundary": "This mode concerns unnecessary but accurate detail. retrieved_evidence_misstatement concerns claims that are false or exceed the evidence, even when concise."
     },
     {
       "mode": "missing_policy_grounding",
       "name": "missing_policy_grounding",
-      "status": "accepted_candidate",
+      "status": "final",
       "definition": "The response makes a policy-derived claim without retrieving the applicable policy when needed and citing its policy identifier.",
       "inclusion": "Include correct or incorrect policy claims when the final answer omits the applicable identifier or relies on an irrelevant retrieval.",
       "exclusion": "Exclude claims supported solely by order/tool state and policy answers that cite the applicable identifier.",
@@ -79,12 +85,18 @@
         "Uncited platform-permission policy claim. After get_order(1) returns permission_denied, the final answer correctly refuses disclosure, but asserts that Cartwheel only allows shoppers to view their own orders without retrieving/citing the applicable policy ID (cw-roles). The system requires a policy ID for every policy claim. Keep the refusal, and ground/cite the general permission rule; no cross-user data was disclosed.",
         "Cancellation restriction stated without policy grounding/citation. get_order(9193) establishes delivered status, but the assistant then states that the order cannot be cancelled without any policy lookup or citation to cw-cancellations. The decision is consistent with the cancellation rule and no invalid action occurs; the failure is omitting the required source for a policy claim. Retrieve/cite cw-cancellations when explaining the restriction."
       ],
-      "close_negative_trace_ids": []
+      "close_negative_trace_ids": [
+        "b045aec93b7fb0eb4898bff291be838f",
+        "86d83c029bc2ed1922afe70e1d1597af",
+        "b414d7798d70bb3a8fc698c7a8632f3d"
+      ],
+      "nearest_neighbor": "missing_required_escalation",
+      "boundary": "This mode concerns absent or irrelevant policy retrieval and citation. missing_required_escalation concerns failure to perform a required human handoff; either can occur without the other."
     },
     {
       "mode": "unresolved_data_inconsistency",
       "name": "unresolved_data_inconsistency",
-      "status": "accepted_candidate",
+      "status": "final",
       "definition": "The agent presents a known missing, invalid, or internally inconsistent record value as reliable, or notices the inconsistency but leaves it unresolved without the required qualification or handoff.",
       "inclusion": "Include contradictory store ownership and impossible catalog prices when the response certifies or repeats the suspect value.",
       "exclusion": "Exclude consistent records and responses that clearly state the uncertainty and follow the specified resolution path without inventing a replacement.",
@@ -127,12 +139,18 @@
         "Unqualified fulfillment claim in a store-mismatch case. The case is explicitly tagged inconsistent_data with evidence reference dq-order-store-mismatch. After only get_order(8003), the assistant states that the jam-trio order was fulfilled by Blue Heron Ceramics, copying store_id=1/store_name from the flagged order record without checking product_id=553 against catalog/store evidence, acknowledging uncertainty, or escalating. It should verify the store association or report the discrepancy rather than certify the inconsistent field. The correct fulfilling store is not exposed in this trace, so this finding does not assert an alternative store.",
         "Unqualified fulfillment claim in a store-mismatch case. The case is explicitly tagged inconsistent_data with evidence reference dq-order-store-mismatch. After only get_order(8003), the assistant states that the jam-trio order was fulfilled by Blue Heron Ceramics, copying store_id=1/store_name from the flagged order record without checking product_id=553 against catalog/store evidence, acknowledging uncertainty, or escalating. It should verify the store association or report the discrepancy rather than certify the inconsistent field. The correct fulfilling store is not exposed in this trace, so this finding does not assert an alternative store."
       ],
-      "close_negative_trace_ids": []
+      "close_negative_trace_ids": [
+        "12c3e40886be28944cfc6625a5d00526",
+        "8488ca8c6921a06a6dc02b5e1b8fd515",
+        "5d5660353071aa14205ee6564ce47751"
+      ],
+      "nearest_neighbor": "retrieved_evidence_misstatement",
+      "boundary": "This mode begins with missing, impossible, or contradictory source data that the response mishandles. retrieved_evidence_misstatement begins with usable evidence that the agent summarizes incorrectly or overstates."
     },
     {
       "mode": "missing_required_escalation",
       "name": "missing_required_escalation",
-      "status": "accepted_candidate",
+      "status": "final",
       "definition": "A case requiring human handling is answered or deferred without creating the required escalation ticket and reporting the handoff.",
       "inclusion": "Include unresolved invalid-data cases and explicit disputes when the trace never performs the required human escalation at that decision point.",
       "exclusion": "Exclude successful escalations that report the actual ticket and SLA, and cases the agent is authorized to resolve directly.",
@@ -166,12 +184,18 @@
         "Recognized invalid catalog price left unresolved without required escalation. search_products returns price_usd=-5 for Rustic Pitcher (product 4). The final answer acknowledges that -$5.00 is unusual or a possible error, but no escalate_to_human call is made and no ticket/follow-up is reported; suggesting the user check with the store does not perform the handoff. The system requires human escalation when unsure. Confirm only that a listing was found, withhold a reliable price, and create a ticket to verify it.",
         "Recognized invalid catalog price left unresolved without required escalation. search_products returns price_usd=-5 for Rustic Pitcher (product 4). The final answer acknowledges that -$5.00 is unusual or a possible error, but no escalate_to_human call is made and no ticket/follow-up is reported; suggesting the user check with the store does not perform the handoff. The system requires human escalation when unsure. Confirm only that a listing was found, withhold a reliable price, and create a ticket to verify it."
       ],
-      "close_negative_trace_ids": []
+      "close_negative_trace_ids": [
+        "12c3e40886be28944cfc6625a5d00526",
+        "8488ca8c6921a06a6dc02b5e1b8fd515",
+        "5d5660353071aa14205ee6564ce47751"
+      ],
+      "nearest_neighbor": "unresolved_data_inconsistency",
+      "boundary": "This mode is present when the required ticket and reported handoff are absent. unresolved_data_inconsistency is present when suspect data is presented as reliable or left unqualified; a response can identify the problem yet still fail to escalate."
     },
     {
       "mode": "ambiguous_candidate_overcommitment",
       "name": "ambiguous_candidate_overcommitment",
-      "status": "accepted_candidate",
+      "status": "final",
       "definition": "The agent claims one record is the user's intended match while multiple candidates remain compatible with the information provided.",
       "inclusion": "Include silently choosing the newest candidate, dropping an unverified candidate, or treating a non-unique clarification as confirmation.",
       "exclusion": "Exclude a ranked list presented as candidates and a unique match established by distinguishing user information or verified identifiers.",
@@ -203,12 +227,18 @@
         "Ambiguity collapsed after insufficient clarification. Orders 4720, 6300, and 4041 are all delivered; 'recent and already delivered' does not uniquely identify the intended order. The response presents only #4720 as the answer by silently interpreting 'recent' as 'most recent'. Keep it a candidate and request distinguishing amount/date confirmation, as required by TOOL-6/RESP-3.",
         "Unsupported narrowing of order candidates. find_order returns Blue Heron Ceramics/store 1 candidates 8255 (product 28), 8022 (product 28), and 4202 (product 22), plus a different-store result. The assistant declares only the two product-28 orders match and omits 4202 without a catalog lookup proving product 22 is not the requested bowl. It should verify product identities or retain unresolved same-store candidates before presenting the candidate set as complete."
       ],
-      "close_negative_trace_ids": []
+      "close_negative_trace_ids": [
+        "4613fff774ba87edc7dcf4db1e035a52",
+        "5d3164ae1fc87774017165e31968aae9",
+        "036dd717576a6dcec8bb0d2488968282"
+      ],
+      "nearest_neighbor": "retrieved_evidence_misstatement",
+      "boundary": "This mode concerns unjustified certainty about which candidate the user intended. retrieved_evidence_misstatement concerns incorrect claims about candidate facts or retrieval scope, even when the answer preserves multiple candidates."
     },
     {
       "mode": "retrieved_evidence_misstatement",
       "name": "retrieved_evidence_misstatement",
-      "status": "accepted_candidate",
+      "status": "final",
       "definition": "The response or visible working step states a factual summary that contradicts retrieved evidence or a deterministic calculation from it, or claims a broader evidence check than the recorded tool activity supports.",
       "inclusion": "Include omitted statuses in a blanket summary, attributing a record to the wrong tool result, incorrect date arithmetic, and assurances that records do not conflict when only one record or source was checked.",
       "exclusion": "Exclude faithful summaries, harmless formatting differences, explicitly scoped statements about one returned record, and uncertainty caused by inconsistent source records.",
@@ -237,10 +267,16 @@
         "Incorrect shipping-duration arithmetic. get_order gives shipped_at=2026-06-24 and delivered_at=2026-06-26. The final answer copies both dates correctly but states '1 day after shipment'; the elapsed transit interval is 2 days. The 3-day interval from ordering on June 23 is correct. Calculate date differences consistently and report 2 days from shipment to delivery.",
         "Unsupported assurance about retrieval scope. The answer says 'I found no conflicting records,' but the trace contains one get_order call and one record. State that the returned record is internally consistent, or check additional sources before claiming there are no conflicts."
       ],
-      "close_negative_trace_ids": [],
+      "close_negative_trace_ids": [
+        "7b257456c5bf40c8aefc7d0c5ed00ab4",
+        "5a3112b9c6feb639eea5ac0ad0feda71",
+        "0fdc006f8b5da168b9c234929573d155"
+      ],
       "workshop_run_ids": [
         "f5e302e5-0aee-48d8-a6c0-ba7f24f93963"
-      ]
+      ],
+      "nearest_neighbor": "unresolved_data_inconsistency",
+      "boundary": "This mode applies when the agent misstates or overstates otherwise usable retrieved evidence. unresolved_data_inconsistency applies when the source record itself is suspect and the agent fails to qualify or resolve it."
     }
   ],
   "ungrouped_annotations": [
@@ -303,6 +339,34 @@
       ],
       "decided_at": "2026-09-23T02:22:21Z",
       "decision_owner": "human"
+    },
+    {
+      "candidate": "taxonomy_boundary_audit",
+      "decision": "accepted",
+      "reason": "The human reviewer approved three evidence-checked close negatives and an explicit nearest-neighbor boundary for each of the six candidate modes. AgentDebug comparison did not support adding an efficiency mode.",
+      "decided_at": "2026-09-23T02:49:34Z",
+      "decision_owner": "human"
+    },
+    {
+      "candidate": "retrieved_evidence_misstatement_post_revision_search",
+      "decision": "five_suggestions_rejected",
+      "reason": "The human reviewer confirmed that all five retrieved candidates faithfully summarized or correctly scoped the recorded tool evidence; one was verbose but did not misstate evidence.",
+      "suggestion_ids": [
+        "retrieved-evidence-post-revision-01",
+        "retrieved-evidence-post-revision-02",
+        "retrieved-evidence-post-revision-03",
+        "retrieved-evidence-post-revision-04",
+        "retrieved-evidence-post-revision-05"
+      ],
+      "decided_at": "2026-09-23T03:06:17Z",
+      "decision_owner": "human"
+    },
+    {
+      "candidate": "six_mode_taxonomy",
+      "decision": "finalized",
+      "reason": "All six modes meet the positive-example requirement, have three evidence-checked close negatives, explicit nearest-neighbor boundaries, evaluator types, and requirement sources. The AgentDebug comparison did not justify another mode.",
+      "decided_at": "2026-09-23T03:06:17Z",
+      "decision_owner": "human"
     }
   ],
   "approved_at": "2026-09-22T21:57:50.029253+00:00",
@@ -344,5 +408,19 @@
         "trace_id": "6b57142d5b2b62b20f3d8aa0a70ab21c"
       }
     ]
-  }
+  },
+  "taxonomy_audited_at": "2026-09-23T02:49:34Z",
+  "agentdebug_comparison": {
+    "source": "https://arxiv.org/abs/2509.25370",
+    "compared_at": "2026-09-23T02:49:34Z",
+    "finding": "AgentDebug categories clarify root modules but do not justify an additional Cartwheel mode from the reviewed evidence.",
+    "possible_omission": "inefficient_planning_or_tool_use",
+    "decision": "not_added_insufficient_confirmed_positives",
+    "evidence": [
+      "b0f19aa32738f622fc9f8d233fce2eee",
+      "2e2dcab063052626d7a346456e0f0675"
+    ],
+    "reason": "Only one human efficiency note and one harmless Workshop overfetching case were found; the latter did not degrade the response. This does not meet the three-positive requirement."
+  },
+  "finalized_at": "2026-09-23T03:06:17Z"
 }
