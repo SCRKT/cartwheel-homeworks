@@ -36,7 +36,33 @@ For the initial HW5 set, we retained the five Fail conversations and selected 30
 | Fail | 0 | 5 |
 | **Total** |  | **35** |
 
-The next collection step is to run targeted, independent scenarios that ask for narrow answers across different intents, roles, record states, and tools. Those traces will be reviewed by the human before any additional labels are accepted. No judge prompt, data split, or test inspection will occur until the dataset has at least 30 accepted Pass and 30 accepted Fail conversations.
+We then ran 36 targeted, independent, one-turn scenarios that asked for narrow answers across different intents, roles, record states, and tools. All 36 runs completed with `gpt-5.6-luna` on the Fast service tier. The batch produced 25 human-confirmed Fail decisions and 11 human-confirmed Pass decisions. Combined with the seed set, the selected dataset now contains:
+
+| Human label | HW5 value | Conversations |
+| --- | ---: | ---: |
+| Pass | 1 | 41 |
+| Fail | 0 | 30 |
+| **Total** |  | **71** |
+
+Each new trace has a unique session and scenario family. The human approved the complete 25 Fail / 11 Pass recommendation set before the decisions were appended to the HW5 label file.
+
+One scenario exposed an additional behavior worth recording. When asked whether support chat could change a password, the agent correctly said that the change must happen in account settings, then unnecessarily created support ticket 182 and explained the escalation SLA. This was labeled Fail for overinformation. It also showed that a prompt designed to be read-only can still cause an agent to choose a mutating tool, so future run plans should distinguish requested actions from possible agent-selected actions.
+
+## Judge data preparation
+
+The exact judge input export contains all 71 accepted conversations. It retains user and assistant messages plus tool calls, tool results, and retrieved policy passages needed to interpret the final reply. It excludes system prompts, human labels, review evidence, expected outcomes, scenario identifiers, and generation metadata. Its SHA-256 digest is `a07a1cc97ccfd3579fc0d46e6aea8a51101c7c9f656c41f7d35294f980345450`.
+
+An identity audit before the first judge run found that the initial migration for `support-0245` and `support-0250` pointed to the first trace in each two-turn session while its written evidence described the final turn. Both turns carried the same original human Pass decision. The HW5 records were corrected to the final-turn trace IDs, and the input export and split were regenerated before any judge prompt was run.
+
+The final split uses seed 7 and the required 20/40/40 fractions:
+
+| Split | Pass | Fail | Total |
+| --- | ---: | ---: | ---: |
+| Training | 8 | 6 | 14 |
+| Development | 16 | 12 | 28 |
+| Test | 17 | 12 | 29 |
+
+Prompt version 0 uses four examples from the training split: a clear Pass, a clear Fail, a borderline Fail, and a borderline Pass. No development or test record appears in the prompt.
 
 ## Decision record
 
