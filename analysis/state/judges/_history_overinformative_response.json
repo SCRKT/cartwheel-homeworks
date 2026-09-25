@@ -7,6 +7,10 @@
     {
       "judge_id": "overinformative_response-v1",
       "prompt_hash": "c5451a893236"
+    },
+    {
+      "judge_id": "overinformative_response-v2",
+      "prompt_hash": "02dfb4cd4bd8"
     }
   ]
 }

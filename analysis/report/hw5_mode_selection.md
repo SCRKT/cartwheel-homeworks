@@ -66,6 +66,12 @@ The final split uses seed 7 and the required 20/40/40 fractions:
 
 Prompt version 0 uses four examples from the training split: a clear Pass, a clear Fail, a borderline Fail, and a borderline Pass. No development or test record appears in the prompt.
 
+## Development outcome
+
+Three prompt versions were evaluated on the fixed 28-record development split. After the approved label corrections, v0 achieved TPR 0.462, TNR 1.000, and 0.750 agreement. Version 1 achieved TPR 0.538, TNR 0.867, and 0.714 agreement. Version 2 achieved TPR 0.462, TNR 0.667, and 0.571 agreement.
+
+Development stopped after the two revisions allowed by the handout. Version 0 is the recommended test candidate because it had the best agreement and detected every human Fail example on development. Its low Pass agreement means it is likely suitable only as a conservative triage signal that sends many cases to human review. The held-out test remains untouched pending the human freeze decision.
+
 ## Decision record
 
 The switch to `overinformative_response` was reviewed and approved by the human on September 24, 2026. The selected label convention is the Homework 5 convention: `1 = Pass` and `0 = Fail`.
