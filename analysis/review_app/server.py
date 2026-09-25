@@ -39,6 +39,10 @@ STATE_FILES = {
     "patterns": STATE_DIR / "patterns.json",
     "suggestions": STATE_DIR / "suggestions.json",
 }
+HW5_INPUTS = STATE_DIR / "hw5_trace_inputs.json"
+HW5_LABELS_DIR = STATE_DIR / "hw5_labels"
+JUDGES_DIR = STATE_DIR / "judges"
+SPLITS = STATE_DIR / "splits.json"
 DEFAULTS: dict[str, Any] = {
     "manifest": {"batches": [], "selected_trace_ids": []},
     "annotations": [],
@@ -61,6 +65,22 @@ def write_json(path: Path, value: Any) -> None:
     temporary = path.with_suffix(path.suffix + ".tmp")
     temporary.write_text(json.dumps(value, indent=2, ensure_ascii=False) + "\n")
     temporary.replace(path)
+
+
+def read_jsonl(path: Path) -> list[dict[str, Any]]:
+    if not path.exists():
+        return []
+    records = []
+    for line in path.read_text().splitlines():
+        if not line.strip():
+            continue
+        try:
+            value = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if isinstance(value, dict):
+            records.append(value)
+    return records
 
 
 def text_content(value: Any) -> str:
@@ -372,6 +392,67 @@ def label_files() -> dict[str, list[dict[str, Any]]]:
     return result
 
 
+def judge_review() -> dict[str, Any]:
+    """Join development predictions, critiques, and current HW5 human labels."""
+    inputs = read_json(HW5_INPUTS, [])
+    traces = {
+        str(record.get("trace_id")): record.get("trace") or []
+        for record in inputs
+        if isinstance(record, dict) and record.get("trace_id")
+    }
+    split_state = read_json(SPLITS, {})
+    judges = []
+    judge_paths = sorted(JUDGES_DIR.glob("*.json")) if JUDGES_DIR.exists() else []
+    for path in judge_paths:
+        if path.name.startswith("_history_"):
+            continue
+        judge = read_json(path, {})
+        mode = str(judge.get("mode") or "")
+        judge_id = str(judge.get("judge_id") or "")
+        prompt_hash = str(judge.get("prompt_hash") or "")
+        predictions = (judge.get("predictions") or {}).get(prompt_hash, {})
+        if not mode or not judge_id or not predictions:
+            continue
+        critiques = (judge.get("critiques") or {}).get(prompt_hash, {})
+        labels = {}
+        for row in read_jsonl(HW5_LABELS_DIR / f"{mode}.jsonl"):
+            if row.get("superseded_by") or not row.get("trace_id"):
+                continue
+            labels[str(row["trace_id"])] = row
+        dev_ids = (split_state.get(mode) or {}).get("dev", [])
+        records = []
+        for trace_id in dev_ids:
+            trace_id = str(trace_id)
+            if trace_id not in predictions or trace_id not in labels:
+                continue
+            messages = traces.get(trace_id, [])
+            users = [m.get("text") for m in messages if m.get("role") == "user" and m.get("text")]
+            assistants = [m.get("text") for m in messages if m.get("role") == "assistant" and m.get("text")]
+            human = "Pass" if int(labels[trace_id]["label"]) == 1 else "Fail"
+            predicted = "Pass" if int(predictions[trace_id]) == 1 else "Fail"
+            records.append({
+                "trace_id": trace_id,
+                "scenario_id": labels[trace_id].get("scenario_id"),
+                "human": human,
+                "judge": predicted,
+                "disagreement": human != predicted,
+                "human_evidence": labels[trace_id].get("evidence") or "",
+                "critique": critiques.get(trace_id) or "",
+                "user": users[-1] if users else "",
+                "assistant": assistants[-1] if assistants else "",
+            })
+        if not records:
+            continue
+        judges.append({
+            "judge_id": judge_id,
+            "model": judge.get("model"),
+            "status": judge.get("status"),
+            "split": "dev",
+            "records": records,
+        })
+    return {"judges": judges}
+
+
 def save_labels(payload: dict[str, Any]) -> dict[str, Any]:
     mode = str(payload.get("mode") or "")
     if not re.fullmatch(r"[a-z][a-z0-9_]*", mode):
@@ -475,6 +556,8 @@ class Handler(BaseHTTPRequestHandler):
             self.send_json(build_review_progress(sessions, annotations, manifest))
         elif path == "/api/labels":
             self.send_json(label_files())
+        elif path == "/api/judge-review":
+            self.send_json(judge_review())
         elif path.startswith("/api/") and path[5:] in STATE_FILES:
             name = path[5:]
             self.send_json(read_json(STATE_FILES[name], DEFAULTS[name]))

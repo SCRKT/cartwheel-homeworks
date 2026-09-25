@@ -38,6 +38,16 @@ def _load_jsonl(path: Path) -> list[dict[str, Any]]:
     return [json.loads(line) for line in path.read_text().splitlines() if line.strip()]
 
 
+def _load_live_labels(path: Path = LABELS_PATH) -> list[dict[str, Any]]:
+    """Collapse the append-only HW5 label history to one current row per trace."""
+    live: dict[str, dict[str, Any]] = {}
+    for row in _load_jsonl(path):
+        if row.get("superseded_by"):
+            continue
+        live[str(row["trace_id"])] = row
+    return list(live.values())
+
+
 def _load_export(path: Path) -> list[dict[str, Any]]:
     payload = json.loads(path.read_text())
     records = payload.get("traces") if isinstance(payload, dict) else payload
@@ -173,7 +183,7 @@ def prepare_inputs(
     output_path: Path = INPUTS_PATH,
 ) -> list[dict[str, Any]]:
     """Save one leakage-free judge input per accepted human label."""
-    labels = _load_jsonl(LABELS_PATH)
+    labels = _load_live_labels()
     eligible_ids = {str(row["trace_id"]) for row in labels}
     if len(eligible_ids) != len(labels):
         raise ValueError("HW5 label file contains duplicate trace IDs")
@@ -201,7 +211,7 @@ def prepare_inputs(
 
 
 def _split_counts(assignment: dict[str, list[str]]) -> dict[str, dict[str, int]]:
-    labels = {str(row["trace_id"]): int(row["label"]) for row in _load_jsonl(LABELS_PATH)}
+    labels = {str(row["trace_id"]): int(row["label"]) for row in _load_live_labels()}
     return {
         name: {
             "Pass": sum(labels[trace_id] == 1 for trace_id in ids),
@@ -245,6 +255,17 @@ def run_development(mode: str, prompt_path: Path) -> tuple[dict[str, str], dict[
     return record, development
 
 
+def resume_development(judge_id: str) -> dict[str, Any]:
+    """Resume an already registered development judge without making a new version."""
+    run_judge(judge_id, split="dev", batch_size=10)
+    development = judge_alignment(judge_id, split="dev")
+    REPORT_DIR.mkdir(parents=True, exist_ok=True)
+    (REPORT_DIR / f"dev-{judge_id}.json").write_text(
+        json.dumps(development, indent=2, sort_keys=True) + "\n"
+    )
+    return development
+
+
 def run_test(judge_id: str) -> dict[str, Any]:
     """Freeze a selected judge, run the held-out test once, and save metrics."""
     freeze_judge(judge_id)
@@ -264,6 +285,8 @@ def main() -> None:
     subparsers.add_parser("split")
     dev = subparsers.add_parser("dev")
     dev.add_argument("prompt", type=Path)
+    dev_resume = subparsers.add_parser("dev-resume")
+    dev_resume.add_argument("judge_id")
     test = subparsers.add_parser("test")
     test.add_argument("judge_id")
     args = parser.parse_args()
@@ -275,6 +298,8 @@ def main() -> None:
         split_data()
     elif args.command == "dev":
         print(json.dumps(run_development(MODE, args.prompt), indent=2))
+    elif args.command == "dev-resume":
+        print(json.dumps(resume_development(args.judge_id), indent=2))
     elif args.command == "test":
         print(json.dumps(run_test(args.judge_id), indent=2))
 

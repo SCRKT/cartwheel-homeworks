@@ -46,6 +46,8 @@ We then ran 36 targeted, independent, one-turn scenarios that asked for narrow a
 
 Each new trace has a unique session and scenario family. The human approved the complete 25 Fail / 11 Pass recommendation set before the decisions were appended to the HW5 label file.
 
+During the first development disagreement review, the human corrected three migrated return-window labels from Pass to Fail because the replies independently appended refund-eligibility information. The current live label counts are **38 Pass and 33 Fail** across the same 71 conversations. The append-only label file retains the three superseded decisions and their replacements.
+
 One scenario exposed an additional behavior worth recording. When asked whether support chat could change a password, the agent correctly said that the change must happen in account settings, then unnecessarily created support ticket 182 and explained the escalation SLA. This was labeled Fail for overinformation. It also showed that a prompt designed to be read-only can still cause an agent to choose a mutating tool, so future run plans should distinguish requested actions from possible agent-selected actions.
 
 ## Judge data preparation
