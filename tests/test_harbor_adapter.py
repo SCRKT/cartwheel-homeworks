@@ -248,6 +248,81 @@ def test_baseline_summary_does_not_classify_infrastructure_errors(
     assert "do not classify; complete five valid trials" in markdown
 
 
+def test_baseline_summary_reads_harbor_023_per_trial_results(tmp_path: Path) -> None:
+    cases_path = tmp_path / "cases.jsonl"
+    case = {
+        "id": "e-304",
+        "mode": "response_quality",
+        "input": {"role": "shopper", "user_id": 1, "message": "hello"},
+        "initial_state": {"world": "reseed", "fixture": None},
+        "expected": {"checks": [{"check": "reply_asks_question"}]},
+    }
+    _write_cases(cases_path, [case])
+    job = tmp_path / "job"
+    job.mkdir()
+    (job / "result.json").write_text(json.dumps({"n_total_trials": 5}))
+    for attempt in range(5):
+        trial = job / f"e-304__trial-{attempt}"
+        trial.mkdir()
+        (trial / "result.json").write_text(
+            json.dumps(
+                {
+                    "task_name": "cartwheel/evals__e-304",
+                    "trial_name": f"trial-{attempt}",
+                    "started_at": f"2026-09-25T00:00:0{attempt}Z",
+                    "verifier_result": {"rewards": {"reward": 1}},
+                    "exception_info": None,
+                }
+            )
+        )
+
+    markdown, passed = summarize_job(
+        job,
+        cases_path=cases_path,
+        expected_attempts=5,
+        classify=True,
+    )
+
+    assert passed is True
+    assert "| `e-304` | 5 | 5 | `kind: \"regression\"` |" in markdown
+
+
+def test_capability_analysis_reads_harbor_023_per_trial_results(
+    tmp_path: Path, monkeypatch
+) -> None:
+    monkeypatch.setattr(
+        "harbor_adapter.analysis.pass_at_k", lambda n, c, k: (n + c + k) / 100
+    )
+    job = tmp_path / "job"
+    job.mkdir()
+    (job / "result.json").write_text(json.dumps({"n_total_trials": 15}))
+    for attempt in range(15):
+        trial = job / f"e-402__trial-{attempt:02d}"
+        trial.mkdir()
+        (trial / "result.json").write_text(
+            json.dumps(
+                {
+                    "task_name": "cartwheel/evals__e-402",
+                    "trial_name": f"trial-{attempt:02d}",
+                    "started_at": f"2026-09-25T00:00:{attempt:02d}Z",
+                    "verifier_result": {
+                        "rewards": {"reward": 1 if attempt % 2 == 0 else 0}
+                    },
+                    "agent_info": {
+                        "model_info": {"provider": None, "name": "gpt-test"}
+                    },
+                    "exception_info": None,
+                }
+            )
+        )
+
+    result = analyze_capability_job(job, "e-402")
+
+    assert result["n"] == 15
+    assert result["trials"][0]["trial_name"] == "trial-00"
+    assert result["trial_order"] == "per-trial result.json started_at order"
+
+
 def test_final_export_requires_the_homework_suite(tmp_path: Path) -> None:
     cases_path = tmp_path / "cases.jsonl"
     base = {
