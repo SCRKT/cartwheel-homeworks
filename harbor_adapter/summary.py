@@ -30,6 +30,30 @@ def _reward(trial: dict[str, Any]) -> float | None:
     return None
 
 
+def load_trial_results(job_dir: Path) -> tuple[list[dict[str, Any]], str]:
+    """Load trials from legacy aggregate or Harbor 0.23 per-trial results."""
+    result_path = job_dir / "result.json"
+    if not result_path.exists():
+        raise FileNotFoundError(f"Harbor result not found: {result_path}")
+    result = json.loads(result_path.read_text())
+    aggregate = result.get("trial_results")
+    if isinstance(aggregate, list) and aggregate:
+        return aggregate, "result.json trial_results order"
+
+    trials: list[dict[str, Any]] = []
+    for path in job_dir.glob("*/result.json"):
+        trial = json.loads(path.read_text())
+        if isinstance(trial, dict) and trial.get("task_name"):
+            trials.append(trial)
+    trials.sort(
+        key=lambda trial: (
+            str(trial.get("started_at", "")),
+            str(trial.get("trial_name", "")),
+        )
+    )
+    return trials, "per-trial result.json started_at order"
+
+
 def summarize_job(
     job_dir: Path,
     *,
@@ -43,13 +67,10 @@ def summarize_job(
     else:
         cases = load_cases(cases_path)
     by_id = {case["id"]: case for case in cases}
-    result_path = job_dir / "result.json"
-    if not result_path.exists():
-        raise FileNotFoundError(f"Harbor result not found: {result_path}")
-    result = json.loads(result_path.read_text())
+    result, _ = load_trial_results(job_dir)
     trials: dict[str, list[dict[str, Any]]] = defaultdict(list)
     unknown: list[str] = []
-    for trial in result.get("trial_results", []):
+    for trial in result:
         case_id = _case_id(str(trial.get("task_name", "")), set(by_id))
         if case_id is None:
             unknown.append(str(trial.get("task_name", "")))
