@@ -70,7 +70,13 @@ Prompt version 0 uses four examples from the training split: a clear Pass, a cle
 
 Three prompt versions were evaluated on the fixed 28-record development split. After the approved label corrections, v0 achieved TPR 0.462, TNR 1.000, and 0.750 agreement. Version 1 achieved TPR 0.538, TNR 0.867, and 0.714 agreement. Version 2 achieved TPR 0.462, TNR 0.667, and 0.571 agreement.
 
-Development stopped after the two revisions allowed by the handout. Version 0 is the recommended test candidate because it had the best agreement and detected every human Fail example on development. Its low Pass agreement means it is likely suitable only as a conservative triage signal that sends many cases to human review. The held-out test remains untouched pending the human freeze decision.
+Development stopped after the two revisions allowed by the handout. Version 0 was selected because it had the best agreement and detected every human Fail example on development. Its low Pass agreement indicated that it would likely be suitable only as a conservative triage signal that sends many cases to human review.
+
+## Held-out test outcome
+
+Version 0 was frozen before any held-out prediction was generated, then evaluated once on all 29 test traces with `gpt-4o-mini`. The test set contained 17 human Pass and 12 human Fail labels. The judge achieved TPR 0.647 (95% Wilson CI 0.413–0.827), TNR 0.833 (95% Wilson CI 0.552–0.953), and 0.724 agreement, with 11 true Pass, 6 false Fail, 10 true Fail, and 2 false Pass decisions.
+
+The eight disagreements were inspected without changing test labels or the frozen prompt. The result supports using the judge only as a human-review triage signal. It should not make autonomous enforcement decisions because it missed two known failures and incorrectly rejected six acceptable responses. The full assessment is recorded in `analysis/report/hw5_test_review.md`.
 
 ## Decision record
 

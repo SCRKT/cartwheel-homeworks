@@ -1,0 +1,30 @@
+{
+  "agreement": 0.7241,
+  "disagreements": [
+    "11673edc69ce9f846f2e8c23c4680524",
+    "244b4df4a4bedd91b39c13f70ad8661e",
+    "2d1164a8c5ea7a8abf2d277b9c9a67fe",
+    "4c5a0853d37759282ab72581edb71848",
+    "8c9119d348674c1b965dc589c1daf1a8",
+    "97e07ea163a4302fcee60f7648c06388",
+    "b414d7798d70bb3a8fc698c7a8632f3d",
+    "ccf7e7c6909417adfe6fb3a6f5a0fe58"
+  ],
+  "fn": 6,
+  "fp": 2,
+  "judge_id": "overinformative_response-v0",
+  "n": 29,
+  "split": "test",
+  "tn": 10,
+  "tnr": 0.8333,
+  "tnr_interval": [
+    0.552,
+    0.953
+  ],
+  "tp": 11,
+  "tpr": 0.6471,
+  "tpr_interval": [
+    0.413,
+    0.8269
+  ]
+}
