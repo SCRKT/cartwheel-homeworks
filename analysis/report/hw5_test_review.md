@@ -45,3 +45,7 @@ The two missed failures share one pattern: additional facts remain close to the 
 Do not use this judge for autonomous enforcement or automatic response rejection. The held-out result is too uncertain and the boundary errors affect both directions: it misses 2 of 12 known failures and rejects 6 of 17 acceptable answers. The confidence interval for Fail recall is especially wide because the test set contains only 12 Fail examples.
 
 The judge can be used as a conservative triage signal if every flagged trace receives human review and the workflow can tolerate false alarms. Under this test distribution, reviewing all 16 judge-Fail cases would find 10 of the 12 human-labeled failures. It should be described as a prioritization aid rather than a reliable substitute for human judgment.
+
+## Human decision
+
+On September 25, 2026, the human reviewer approved the recommendation: reject the judge for autonomous enforcement and retain it only as a human-review triage aid.

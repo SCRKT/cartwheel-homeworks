@@ -76,7 +76,7 @@ Development stopped after the two revisions allowed by the handout. Version 0 wa
 
 Version 0 was frozen before any held-out prediction was generated, then evaluated once on all 29 test traces with `gpt-4o-mini`. The test set contained 17 human Pass and 12 human Fail labels. The judge achieved TPR 0.647 (95% Wilson CI 0.413–0.827), TNR 0.833 (95% Wilson CI 0.552–0.953), and 0.724 agreement, with 11 true Pass, 6 false Fail, 10 true Fail, and 2 false Pass decisions.
 
-The eight disagreements were inspected without changing test labels or the frozen prompt. The result supports using the judge only as a human-review triage signal. It should not make autonomous enforcement decisions because it missed two known failures and incorrectly rejected six acceptable responses. The full assessment is recorded in `analysis/report/hw5_test_review.md`.
+The eight disagreements were inspected without changing test labels or the frozen prompt. The result supports using the judge only as a human-review triage signal. It should not make autonomous enforcement decisions because it missed two known failures and incorrectly rejected six acceptable responses. The human reviewer approved this final decision on September 25, 2026. The full assessment is recorded in `analysis/report/hw5_test_review.md`.
 
 ## Decision record
 
