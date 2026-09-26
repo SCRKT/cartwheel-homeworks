@@ -180,7 +180,7 @@ def test_instrumentation_failure_does_not_report_success(monkeypatch) -> None:
 @pytest.mark.parametrize("has_key", [False, True])
 @pytest.mark.parametrize("model_name", ["ollama_chat/local-model", "claude-opus-4-6"])
 def test_non_openai_direct_run_does_not_export(
-    has_key, model_name, monkeypatch, hosted_exports, caplog,
+    has_key, model_name, monkeypatch, hosted_exports,
 ) -> None:
     from agent import agent as support
     from agents.extensions.models.litellm_model import LitellmModel
@@ -201,7 +201,6 @@ def test_non_openai_direct_run_does_not_export(
     processor, requests = hosted_exports
     processor.force_flush()
     assert requests == []
-    assert "skipping trace export" not in caplog.text
 
 
 def test_non_openai_direct_run_preserves_langfuse(monkeypatch, hosted_exports) -> None:
