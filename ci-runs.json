@@ -1,0 +1,29 @@
+{
+  "case_id": "e-001",
+  "model": "gpt-5.6-luna",
+  "service_tier": "fast",
+  "attempts_per_case": 5,
+  "judge_calls_per_run": 0,
+  "intentional_regression_run": {
+    "url": "https://github.com/SCRKT/cartwheel-homeworks/actions/runs/36215130310",
+    "commit": "7942fc6e3d6c6633f54fd1b31f9a13436a9dee0e",
+    "workflow_result": "failure",
+    "target_case_passes": 0,
+    "target_case_trials": 5,
+    "target_case_ci_decision": "block"
+  },
+  "reverted_regression_run": {
+    "url": "https://github.com/SCRKT/cartwheel-homeworks/actions/runs/36216043198",
+    "commit": "85084d289de0f2253428e748167639b5c16f1955",
+    "workflow_result": "failure",
+    "target_case_passes": 5,
+    "target_case_trials": 5,
+    "target_case_ci_decision": "pass",
+    "other_regression_failures": {
+      "e-003": "4/5",
+      "e-006": "4/5"
+    },
+    "offline_check_note": "One tracing-log test failed from shared logging state after passing in the first CI run and in local validation."
+  },
+  "explanation": "The temporary prompt instruction made e-001 fail all five trials. Removing only that instruction restored e-001 to five of five. The second workflow remained red because regression cases e-003 and e-006 each failed one completed behavioral trial; those outcomes are retained as new reliability evidence rather than rerun."
+}
