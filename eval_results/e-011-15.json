@@ -1,0 +1,126 @@
+{
+  "case_id": "e-011",
+  "model": "gpt-5.6-luna",
+  "trial_order": "per-trial result.json started_at order",
+  "trials": [
+    {
+      "trial_name": "e-011__YVnpNeB",
+      "passed": 1
+    },
+    {
+      "trial_name": "e-011__gGVXn4z",
+      "passed": 0
+    },
+    {
+      "trial_name": "e-011__XzZ2hJi",
+      "passed": 0
+    },
+    {
+      "trial_name": "e-011__JZa9Xvj",
+      "passed": 1
+    },
+    {
+      "trial_name": "e-011__yG6Jq2o",
+      "passed": 0
+    },
+    {
+      "trial_name": "e-011__T9PBuid",
+      "passed": 0
+    },
+    {
+      "trial_name": "e-011__nRv97ji",
+      "passed": 0
+    },
+    {
+      "trial_name": "e-011__LHJbmA9",
+      "passed": 1
+    },
+    {
+      "trial_name": "e-011__NjT7v3k",
+      "passed": 0
+    },
+    {
+      "trial_name": "e-011__ifMpEYx",
+      "passed": 1
+    },
+    {
+      "trial_name": "e-011__N5m9LRe",
+      "passed": 0
+    },
+    {
+      "trial_name": "e-011__EWyNHzo",
+      "passed": 0
+    },
+    {
+      "trial_name": "e-011__6vK79dr",
+      "passed": 0
+    },
+    {
+      "trial_name": "e-011__7VrbSho",
+      "passed": 0
+    },
+    {
+      "trial_name": "e-011__xXUPdTT",
+      "passed": 0
+    }
+  ],
+  "rewards": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "n": 15,
+  "successes": 4,
+  "comparisons": [
+    {
+      "n": 5,
+      "successes": 2,
+      "pass_at_k": {
+        "1": 0.4,
+        "3": 0.9,
+        "5": 1.0
+      }
+    },
+    {
+      "n": 10,
+      "successes": 4,
+      "pass_at_k": {
+        "1": 0.4,
+        "3": 0.8333333333333334,
+        "5": 0.9761904761904762
+      }
+    },
+    {
+      "n": 15,
+      "successes": 4,
+      "pass_at_k": {
+        "1": 0.2666666666666667,
+        "3": 0.6373626373626373,
+        "5": 0.8461538461538461,
+        "10": 0.9963369963369964,
+        "15": 1.0
+      }
+    }
+  ],
+  "stability_assessment": {
+    "stable_after_15_runs": false,
+    "change_from_10_to_15": {
+      "pass_at_1": -0.1333333333333333,
+      "pass_at_3": -0.1959706959706961,
+      "pass_at_5": -0.1300366300366301
+    },
+    "explanation": "The pass@1, pass@3, and pass@5 estimates all fell materially after five additional failures, so 15 runs did not produce a stable estimate."
+  }
+}
