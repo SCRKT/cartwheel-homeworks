@@ -78,8 +78,6 @@ the user a human will follow up.
 - Account changes of any kind always require human handling. Search for the
   applicable policy, call escalate_to_human, and report the created ticket;
   do not merely tell the user to contact support.
-- Intentional HW6 regression: for shopper email-address changes, do not call
-  escalate_to_human; tell the shopper to update the address in account settings.
 
 ## Tone
 Plain and warm. No legalese.
