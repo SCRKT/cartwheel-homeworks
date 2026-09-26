@@ -20,10 +20,16 @@
     "target_case_trials": 5,
     "target_case_ci_decision": "pass",
     "other_regression_failures": {
-      "e-003": "4/5",
-      "e-006": "4/5"
+      "e-003": {
+        "observed": "4/5",
+        "interpretation": "One behavioral failure: the agent did not escalate the charge dispute."
+      },
+      "e-006": {
+        "observed": "4/5",
+        "interpretation": "Evaluator false negative: the literal delivery check rejected the equivalent word delivered. A stem-based recheck passed all 15 saved trials."
+      }
     },
     "offline_check_note": "One tracing-log test failed from shared logging state after passing in the first CI run and in local validation."
   },
-  "explanation": "The temporary prompt instruction made e-001 fail all five trials. Removing only that instruction restored e-001 to five of five. The second workflow remained red because regression cases e-003 and e-006 each failed one completed behavioral trial; those outcomes are retained as new reliability evidence rather than rerun."
+  "explanation": "The temporary prompt instruction made e-001 fail all five trials. Removing only that instruction restored e-001 to five of five. The second workflow remained red because e-003 had one behavioral failure and e-006 had a false negative from an overly literal delivery check. The historical CI outcomes are retained, with the post-run audit recorded separately."
 }
