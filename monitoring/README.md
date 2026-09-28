@@ -32,3 +32,13 @@ Both point estimates exceed the precommitted 0.15 threshold. Start a new error
 analysis on the flagged traces and have a human confirm each candidate because
 this judge was approved only for triage. Turn confirmed failures into new
 Homework 6 evaluation cases before changing or enforcing agent behavior.
+
+## Operational evidence
+
+- Langfuse dashboard: [HW7 Overinformative Response Monitor](http://localhost:3000/project/cartwheel-dev/dashboards/cmullpxhx000fsc072jm9t4l9)
+- Successful manual workflow: [behavior monitor run 36467153998](https://github.com/SCRKT/cartwheel-homeworks/actions/runs/36467153998)
+- The manual 24-hour run grouped 91 traces into 88 conversations, judged 30
+  unique records, wrote 33 scores, and uploaded the history, latest result, and
+  prevalence chart as workflow artifact `behavior-monitor-36467153998`.
+- The repository-scoped `cartwheel-mac` runner keeps the local Langfuse host
+  reachable for scheduled runs.
