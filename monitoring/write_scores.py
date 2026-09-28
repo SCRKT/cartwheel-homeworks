@@ -70,8 +70,43 @@ def build_score_records(
         A list of score record dicts with keys: score_id, name, value,
         data_type, trace_id, comment (comment is None for verdicts).
     """
-    ### YOUR CODE HERE (hw7)
-    raise NotImplementedError("hw7: implement build_score_records")
+    records: list[dict[str, Any]] = []
+    for trace_id, verdict in random_verdicts.items():
+        records.append(
+            {
+                "score_id": _stable_id(mode, "verdict", trace_id),
+                "name": f"{mode}_verdict",
+                "value": float(verdict),
+                "data_type": "NUMERIC",
+                "trace_id": trace_id,
+                "comment": None,
+            }
+        )
+    for trace_id, verdict in risk_verdicts.items():
+        records.append(
+            {
+                "score_id": _stable_id(mode, "risk_verdict", trace_id),
+                "name": f"{mode}_risk_verdict",
+                "value": float(verdict),
+                "data_type": "NUMERIC",
+                "trace_id": trace_id,
+                "comment": None,
+            }
+        )
+    records.append(
+        {
+            "score_id": _stable_id(mode, "prevalence", batch_label),
+            "name": f"{mode}_corrected_prevalence",
+            "value": float(estimate["corrected"]),
+            "data_type": "NUMERIC",
+            "trace_id": None,
+            "comment": (
+                f"95% CI {estimate['ci_low']}-{estimate['ci_high']}, "
+                f"raw {estimate['raw']}, n={estimate['n_sample']}"
+            ),
+        }
+    )
+    return records
 
 
 # ---------------------------------------------------------------------------
@@ -96,6 +131,29 @@ def post_scores(records: list[dict[str, Any]]) -> int:
     from langfuse import get_client
 
     client = get_client()
+    batch_trace_ids: dict[str, str] = {}
+    for record in records:
+        if record.get("trace_id") is not None:
+            continue
+        # Langfuse requires every score to belong to a trace, session, or
+        # dataset run. Represent the period-level record with a stable,
+        # synthetic batch trace while keeping the score builder's public
+        # contract (trace_id=None) intact.
+        batch_trace_id = client.create_trace_id(
+            seed=f"cartwheel-monitoring-batch:{record['score_id']}"
+        )
+        span = client.start_span(
+            trace_context={"trace_id": batch_trace_id},
+            name="cartwheel-monitoring-batch",
+            input={"score_name": record["name"]},
+            output={"status": "scored"},
+            metadata={"score_name": record["name"]},
+        )
+        span.end()
+        batch_trace_ids[record["score_id"]] = batch_trace_id
+    if batch_trace_ids:
+        client.flush()
+
     for record in records:
         kwargs: dict[str, Any] = {
             "name": record["name"],
@@ -105,6 +163,8 @@ def post_scores(records: list[dict[str, Any]]) -> int:
         }
         if record.get("trace_id") is not None:
             kwargs["trace_id"] = record["trace_id"]
+        else:
+            kwargs["trace_id"] = batch_trace_ids[record["score_id"]]
         if record.get("comment"):
             kwargs["comment"] = record["comment"]
         client.create_score(**kwargs)

@@ -9,9 +9,11 @@ data/cartwheel.db
 
 # Local conversation state and scenario/replay run outputs.
 .sessions.db
+.sessions.db-*
 scenarios/results/
 replay/results/
 .harbor/
+monitoring/latest.json
 
 # Python
 __pycache__/

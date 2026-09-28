@@ -1,0 +1,37 @@
+name: behavior monitor
+
+on:
+  schedule:
+    - cron: "17 7 * * *"
+  workflow_dispatch:
+
+jobs:
+  monitor:
+    name: overinformative response monitor
+    # Langfuse runs on this computer, so the job must run here as well.
+    runs-on: [self-hosted, cartwheel-local]
+    timeout-minutes: 30
+    env:
+      PYTHONPATH: ${{ github.workspace }}
+      LANGFUSE_PUBLIC_KEY: ${{ secrets.LANGFUSE_PUBLIC_KEY }}
+      LANGFUSE_SECRET_KEY: ${{ secrets.LANGFUSE_SECRET_KEY }}
+      LANGFUSE_HOST: ${{ vars.LANGFUSE_HOST }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - uses: astral-sh/setup-uv@v5
+      - run: uv sync
+      - name: Monitor the previous 24 hours
+        run: uv run python -m monitoring.run --last-hours 24
+      - name: Upload monitoring output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: behavior-monitor-${{ github.run_id }}
+          path: |
+            monitoring/latest.json
+            monitoring/history.jsonl
+            monitoring/prevalence.svg
+          if-no-files-found: warn
